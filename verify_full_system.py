@@ -10,8 +10,8 @@ print("=" * 60)
 print("LAYER 1: PRESENTATION (PPTX) INTEGRITY & FLOW")
 print("=" * 60)
 prs = Presentation(str(PPTX_PATH))
-print(f"Total Slides: {len(prs.slides)} (Expected: 16)")
-assert len(prs.slides) == 16, "Deck must have exactly 16 slides!"
+print(f"Total Slides: {len(prs.slides)} (Expected: 13)")
+assert len(prs.slides) == 13, "Deck must have exactly 13 slides!"
 
 # Check Slide 1 details
 s1 = prs.slides[0]
@@ -25,9 +25,9 @@ assert "Neeraj" in full_s1 and "Pankaj" in full_s1, "Team members missing from t
 assert "2308410300042" in full_s1 and "2308410300044" in full_s1, "Roll numbers missing from title slide!"
 print("  -> Academic & Team Credentials: VERIFIED (100% MATCH)")
 
-# Check Slides 2 to 15
-print("\nSlides 02-15 (Content Structure & Deep Dive Links):")
-for i in range(1, 15):
+# Check Slides 2 to 12
+print("\nSlides 02-12 (Content Structure & Deep Dive Links):")
+for i in range(1, 12):
     slide = prs.slides[i]
     slide_num = i + 1
     has_notes = slide.has_notes_slide and bool(slide.notes_slide.notes_text_frame.text.strip())
@@ -51,17 +51,17 @@ for i in range(1, 15):
     assert len(links) > 0, f"Slide {slide_num} missing deep-dive link!"
     assert has_notes, f"Slide {slide_num} missing speaker notes!"
 
-# Check Slide 16
-print("\nSlide 16 (Closing Vision, QR Code & Live Portal):")
-s16 = prs.slides[15]
-s16_texts = [s.text_frame.text for s in s16.shapes if s.has_text_frame]
-full_s16 = " ".join(s16_texts)
-assert "Every Ray Deserves a Second Life" in full_s16, "Vision quote missing on Slide 16!"
-assert "iamneerajverma001.github.io/SunSecond" in full_s16, "GitHub Pages URL missing on Slide 16!"
-# Check pictures on slide 16
-pictures = [s for s in s16.shapes if s.shape_type == 13]  # 13 = PICTURE
+# Check Slide 13 (Final Closing Slide)
+print("\nSlide 13 (Closing Vision, QR Code & Live Portal):")
+s13 = prs.slides[12]
+s13_texts = [s.text_frame.text for s in s13.shapes if s.has_text_frame]
+full_s13 = " ".join(s13_texts)
+assert "Every Ray Deserves a Second Life" in full_s13, "Vision quote missing on Slide 13!"
+assert "iamneerajverma001.github.io/SunSecond" in full_s13, "GitHub Pages URL missing on Slide 13!"
+# Check pictures on slide 13
+pictures = [s for s in s13.shapes if s.shape_type == 13]  # 13 = PICTURE
 print(f"  -> Embedded QR Pictures found: {len(pictures)} (Expected: 1)")
-assert len(pictures) >= 1, "QR code picture must be embedded on Slide 16!"
+assert len(pictures) >= 1, "QR code picture must be embedded on Slide 13!"
 print("  -> Closing Vision & QR Code: VERIFIED")
 
 print("\n" + "=" * 60)
