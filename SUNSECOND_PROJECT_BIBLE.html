@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master Project Bible (v3.1) — SunSecond (STDD)</title>
+  <style>
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --slate: #1e293b;
+  --muted: #475569;
+  --teal: #0d9488;
+  --teal-dark: #0f766e;
+  --teal-soft: #ccfbf1;
+  --amber: #f59e0b;
+  --border: #cbd5e1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--slate);
+  line-height: 1.65;
+}
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: #0f172a; color: #f8fafc;
+  padding: 12px 24px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  border-bottom: 3px solid var(--teal);
+  gap: 10px;
+}
+.topbar .brand { font-weight: 800; font-size: 16px; letter-spacing: 0.4px; }
+.topbar .brand span { color: #2dd4bf; }
+.topbar nav a {
+  color: #e2e8f0; text-decoration: none; font-size: 13px; font-weight: 600;
+  margin-left: 16px; padding: 6px 12px; border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+}
+.topbar nav a:hover { background: var(--teal); color: #fff; }
+.container { max-width: 1080px; margin: 28px auto 60px; padding: 0 20px; }
+.doc-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 36px 42px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+h1 { color: #0f172a; border-bottom: 3px solid var(--teal); padding-bottom: 10px; margin-top: 0; font-size: 28px; }
+h2 { color: var(--teal-dark); margin-top: 32px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; font-size: 21px; }
+h3 { color: #1e293b; margin-top: 22px; font-size: 17px; }
+a { color: var(--teal-dark); font-weight: 600; }
+a:hover { color: var(--teal); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; display: block; overflow-x: auto; }
+th { background: var(--teal); color: #fff; text-align: left; padding: 10px 12px; font-weight: 700; }
+td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+tr:nth-child(even) td { background: #f8fafc; }
+blockquote {
+  margin: 18px 0; padding: 14px 18px;
+  background: #f0fdfa; border-left: 4px solid var(--teal);
+  border-radius: 0 8px 8px 0; color: #134e4a;
+}
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.92em; color: #0f172a; }
+pre { background: #0f172a; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; color: inherit; padding: 0; }
+.mermaid {
+  background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px;
+  padding: 16px; margin: 18px 0; text-align: center; overflow-x: auto;
+}
+.hero {
+  background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+  color: #fff; border-radius: 16px; padding: 36px 40px; margin-bottom: 28px;
+}
+.hero h1 { color: #fff; border: none; margin: 0 0 8px; font-size: 32px; }
+.hero .tag {
+  display: inline-block; background: rgba(45,212,191,0.2); color: #5eead4;
+  border: 1px solid #2dd4bf; padding: 4px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 700; margin-bottom: 14px;
+}
+.hero p { color: #cbd5e1; margin: 6px 0; font-size: 15px; }
+.cta-row { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-block; padding: 12px 20px; border-radius: 8px;
+  text-decoration: none; font-weight: 700; font-size: 14px;
+}
+.btn-primary { background: var(--teal); color: #fff !important; }
+.btn-primary:hover { background: #14b8a6; }
+.btn-amber { background: var(--amber); color: #0f172a !important; }
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px; margin-top: 18px;
+}
+.app-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px 22px; display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.app-card:hover { transform: translateY(-2px); border-color: var(--teal); }
+.app-pill {
+  display: inline-block; background: var(--teal-soft); color: var(--teal-dark);
+  font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 6px; margin-bottom: 8px;
+}
+.app-card h3 { margin: 4px 0 8px; font-size: 16px; color: #0f172a; }
+.app-card p { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+.footer-bar {
+  text-align: center; color: var(--muted); font-size: 12px; margin-top: 36px; padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+@media print { .topbar { display: none; } .doc-card { border: none; box-shadow: none; padding: 0; } }
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Sun<span>Second</span> (STDD) — Deep-Dive Data Room</div>
+    <nav>
+      <a href="index.html">Data Room Home</a>
+      <a href="SUNSECOND_PROJECT_BIBLE.html">Master Project Bible</a>
+      <a href="SunSecond_STDD_Executive_Pitch_Deck.pptx">Download Pitch Deck (.pptx)</a>
+    </nav>
+  </header>
+  <main class="container">
+    <article class="doc-card">
+      <h1 id="the-sunsecond-stdd-master-project-bible">THE SUNSECOND (STDD) MASTER PROJECT BIBLE</h1>
+<h2 id="the-gia-for-solar-integrated-second-life-qualification-managed-liquidity-toxin-free-resource-extraction-platform">The "GIA for Solar": Integrated Second-Life Qualification, Managed Liquidity &amp; Toxin-Free Resource Extraction Platform</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Academic &amp; Venture Control</th>
+<th style="text-align: left;">Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Project Name</strong></td>
+<td style="text-align: left;"><strong>SunSecond</strong> <em>(SunSecond STDD — Standardized Solar Lifecycle, Liquidity &amp; Extraction Ecosystem)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Subject / Course</strong></td>
+<td style="text-align: left;"><strong>BEC754 — Start-up and Entrepreneurial Activity Assessment</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Branch / Department</strong></td>
+<td style="text-align: left;"><strong>Electronics Engineering</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Institution</strong></td>
+<td style="text-align: left;"><strong>Rajkiya Engineering College, Sonbhadra</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Team Members</strong></td>
+<td style="text-align: left;"><strong>1. Neeraj</strong> (Roll No.: <code>2308410300042</code>)<br><strong>2. Pankaj</strong> (Roll No.: <code>2308410300044</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Geographic Scope</strong></td>
+<td style="text-align: left;">India Solar-Belt Launchpad (including Sonbhadra / Eastern UP Energy Corridor Pilot) $\rightarrow$ Global Scale</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Edition</strong></td>
+<td style="text-align: left;"><strong>Version 3.1 (Final Academic &amp; Venture Master Blueprint)</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<h3 id="the-unifying-principle">THE UNIFYING PRINCIPLE</h3>
+<p><strong>"Test First. Reuse Every Safe Watt. Extract Every Gram From What Cannot Be Reused."</strong></p>
+<p><em>When <strong>SunSecond STDD</strong> certifies a panel reusable, the market buys it without hesitation. When <strong>SunSecond STDD</strong> condemns a panel unsafe, the owner surrenders it directly to us with zero friction.</em></p>
+</blockquote>
+<hr />
+<h2 id="executive-master-scorecard">Executive Master Scorecard</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pillar</th>
+<th style="text-align: left;">Core Metric / Architectural Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>The Global &amp; Indian Opportunity</strong></td>
+<td style="text-align: left;"><strong>78M+ tonnes</strong> global PV waste by 2050; India surges to <strong>340,000 tonnes (2030)</strong> $\rightarrow$ <strong>4.5M tonnes (2040)</strong> backed by mandatory <strong>CPCB Category CEEW-14 EPR</strong> rules</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Brand &amp; Market Moat</strong></td>
+<td style="text-align: left;"><strong>GIA</strong> (unquestioned cryptographic 4S grading authority) + <strong>StockX / Cashify</strong> (instant on-site liquidity &amp; escrow)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Diagnostic Breakthrough</strong></td>
+<td style="text-align: left;">Decision-first NDE sensor fusion (<strong>Dark I-V + AC-IS + 365 nm UVF + Active Thermal + Rapid Mist Wet-Leakage + Portable NIR</strong>) @ <strong>₹42–₹85/panel</strong> vs. ₹2 Crore commercial mobile labs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Toxin-Free Extraction Breakthrough</strong></td>
+<td style="text-align: left;"><strong>Dual-Path Delamination</strong> (PID Hot-Knife ~285°C intact glass + Dry Roller/Water-Jet shattered glass) + <strong>Closed-Loop Biodegradable MSA + Electrowinning</strong> (99.9% Silver, Zero (\text{NO}_x)/HF) + <strong>EV Battery Si-Anode Upcycling</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Modular Hardware Suites</strong></td>
+<td style="text-align: left;"><strong>Testing</strong>: <code>Scout</code> (Backpack), <code>Express-Van</code>, <code>Vault-Hub</code> | <strong>Scrapping</strong>: <code>Extract-Pod</code> (Pickup), <code>Extract-Box 20</code> (Solar Container — <strong>88% freight weight cut</strong>), <code>Extract-Refinery</code> (ZLD Hub)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Unit-1 Launch Capital</strong></td>
+<td style="text-align: left;"><strong>₹23.00 Lakh (~$27,500)</strong> all-in (<strong>₹15L</strong> dual-sector setup + <strong>₹8L</strong> working capital) <em>(Ultra-lean student/grant pilot: ₹8.5–₹10L)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Unit-1 Monthly Economics</strong></td>
+<td style="text-align: left;"><strong>₹3.00 Lakh/mo OpEx</strong> | Break-Even: <strong>360 panels/mo (Month 4)</strong> | Steady Profit (800 panels/mo): <strong>₹3.70 Lakh/mo (₹44.4L/yr)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Payback &amp; Return on Capital</strong></td>
+<td style="text-align: left;"><strong>11–13 Months Full Capital Payback</strong> | <strong>~193% Annualized Cash-on-Cash ROI</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scrap Profit Pivot</strong></td>
+<td style="text-align: left;">Flips CEEW's <strong>-₹10,230/tonne</strong> standalone loss into <strong>+₹62,500/tonne (Phase 1)</strong> $\rightarrow$ <strong>+₹98,000/tonne (Phase 2)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5-Year Wealth &amp; Scale Horizon</strong></td>
+<td style="text-align: left;"><strong>₹110 Crore ARR | ₹40 Crore EBITDA | ₹500–₹700 Crore Valuation</strong> (15 hubs + 600 techs + national label licensing + BESS expansion)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="master-navigation-flow">Master Navigation Flow</h2>
+<ul>
+<li><a href="#part-i-the-crisis-regulatory-catalyst--market-opportunity"><strong>PART I: THE CRISIS, REGULATORY CATALYST &amp; MARKET OPPORTUNITY</strong></a></li>
+<li><a href="#part-ii-brand-identity--the-gia-for-solar-trust-architecture"><strong>PART II: BRAND IDENTITY &amp; THE "GIA FOR SOLAR" TRUST ARCHITECTURE</strong></a></li>
+<li><a href="#part-iii-end-to-end-technical--hardware-architecture"><strong>PART III: END-TO-END TECHNICAL &amp; HARDWARE ARCHITECTURE</strong></a></li>
+<li><em>3.1 Integrated System Flow</em> | <em>3.2 Decision-First Diagnostic Science (11 NDE Methods)</em> | <em>3.3 Three Testing Suites</em> | <em>3.4 Multi-Tier Cascade Reuse &amp; Poka-Yoke</em> | <em>3.5 Toxin-Free Extraction Science (10 Methods) &amp; Three Scrapping Suites</em></li>
+<li><a href="#part-iv-the-commercial-engine--high-velocity-monetization"><strong>PART IV: THE COMMERCIAL ENGINE &amp; HIGH-VELOCITY MONETIZATION</strong></a></li>
+<li><a href="#part-v-ground-reality-financials-unit-1-launch--wealth-creation"><strong>PART V: GROUND-REALITY FINANCIALS, UNIT-1 LAUNCH &amp; WEALTH CREATION</strong></a></li>
+<li><a href="#part-vi-risk-defense-governance--the-20262040-future-horizon"><strong>PART VI: RISK DEFENSE, GOVERNANCE &amp; THE 2026–2040 FUTURE HORIZON</strong></a></li>
+<li><a href="#part-vii-academic-execution--18000-lab-mvp-0--field-interview-kit"><strong>PART VII: ACADEMIC EXECUTION — ₹18,000 LAB <code>MVP-0</code> &amp; FIELD INTERVIEW KIT</strong></a></li>
+</ul>
+<hr />
+<h1 id="part-i-the-crisis-regulatory-catalyst-market-opportunity">PART I: THE CRISIS, REGULATORY CATALYST &amp; MARKET OPPORTUNITY</h1>
+<h2 id="11-the-inevitable-retirement-wave-india-global">1.1 The Inevitable Retirement Wave (India &amp; Global)</h2>
+<p>Over <strong>1.6 Terawatts (TW)</strong> of solar photovoltaic (PV) panels have been installed globally, with India ranking among the top four solar markets worldwide. Although solar modules carry 25-year performance warranties, <strong>the real retirement tsunami is arriving 10–15 years early</strong>:
+* <strong>Utility "Re-Powering" Economics</strong>: Utility solar parks actively rip out 10–14 year old 250W–330W polycrystalline modules to install modern 550W–700W bifacial TOPCon/HJT panels—doubling power generation on the exact same land and grid interconnection.
+* <strong>Storm, Thermal &amp; Transport Attrition</strong>: Extreme Indian summer heat (45°C–50°C ambient), hailstorms, and rough logistics prematurely retire millions of panels annually.
+* <strong>Quantified Waste Trajectory</strong>:
+  * <strong>Global (IRENA)</strong>: 4–8 million tonnes by 2030 $\rightarrow$ <strong>78+ million metric tonnes by 2050</strong> (&gt;$15 Billion recoverable raw material value).
+  * <strong>India (CEEW)</strong>: <strong>~340,000 metric tonnes by 2030</strong> $\rightarrow$ <strong>~4.5 million metric tonnes by 2040</strong>.</p>
+<h2 id="12-the-anatomy-paradox-mass-vs-economic-value">1.2 The Anatomy Paradox: Mass vs. Economic Value</h2>
+<p>Crystalline silicon (c-Si) panels represent &gt;95% of installed capacity and exhibit an extreme mismatch between physical mass and economic value:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Material Layer</th>
+<th style="text-align: center;">Mass Share (%)</th>
+<th style="text-align: center;">Value Share (%)</th>
+<th style="text-align: left;">Structural Reality &amp; Value Unlock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Low-Iron Solar Glass</strong></td>
+<td style="text-align: center;">70% – 76%</td>
+<td style="text-align: center;">~5% <em>(if shredded)</em></td>
+<td style="text-align: left;">Hammer-mills crush it into ₹2/kg contaminated dust; <strong>Hot-Knife peeling</strong> preserves unbroken sheets worth <strong>₹13–₹18/kg</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Aluminum Frame (6063-T5)</strong></td>
+<td style="text-align: center;">8% – 13%</td>
+<td style="text-align: center;">~26%</td>
+<td style="text-align: left;">Pure extruded alloy; commands <strong>+35% Green Aluminum premium</strong> from extrusion OEMs chasing EU CBAM / Scope 3 targets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EVA Encapsulant</strong></td>
+<td style="text-align: center;">5% – 7%</td>
+<td style="text-align: center;">Negative</td>
+<td style="text-align: left;">Cross-linked thermoset "superglue" resistant to melting; burning emits toxic VOCs/dioxins.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Silicon Wafers (6N Pure)</strong></td>
+<td style="text-align: center;">3% – 5%</td>
+<td style="text-align: center;">~12% <em>(50%+ upcycled)</em></td>
+<td style="text-align: left;">Already 99.9999% semiconductor purity; upcycling to <strong>EV Li-Ion battery silicon anodes</strong> multiplies value <strong>5×–10×</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Backsheet (PET / PVDF)</strong></td>
+<td style="text-align: center;">1.5% – 2.5%</td>
+<td style="text-align: center;">Zero / Hazard</td>
+<td style="text-align: left;">Fluorinated PVDF/Tedlar releases lethal <strong>Hydrofluoric Acid (HF)</strong> if thermally incinerated without sorting.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Copper Cables &amp; Ribbons</strong></td>
+<td style="text-align: center;">~1%</td>
+<td style="text-align: center;">~8%</td>
+<td style="text-align: left;">High 48-hour liquidity; internal solder ribbons contain neurotoxic <strong>Lead (Pb)</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Silver Paste (Ag)</strong></td>
+<td style="text-align: center;"><strong>0.05% – 0.08%</strong></td>
+<td style="text-align: center;"><strong>~47%</strong></td>
+<td style="text-align: left;">Legacy 2010–2018 panels dying now hold <strong>15–22g Ag/panel (₹1,350–₹1,980 of silver!)</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="13-why-todays-market-is-structurally-broken-4-interlocking-failures">1.3 Why Today's Market Is Structurally Broken (4 Interlocking Failures)</h2>
+<ol>
+<li><strong>CEEW's Negative Recycling Economics</strong>: CEEW's financial assessment proved that standalone mechanical/chemical PV recycling in India loses <strong>₹10,230 to ₹12,431 per tonne</strong> when operators pay for whole scrap panels, haul empty frames long distances, and shred panels into low-grade dust.</li>
+<li><strong>The Testing Cost Wall</strong>: Fixed IEC 17025 labs cost ₹8+ Crore; commercial mobile PV labs (e.g., <em>MBJ Mobile Lab 5.0</em>) cost <strong>₹1.8–₹2.3 Crore</strong> and process only 60–100 panels/day (<strong>₹1,500–₹2,500/panel</strong>)—completely unviable for ₹1,500–₹2,500 used panels.</li>
+<li><strong>Dangerous Grey-Market Reuse</strong>: 40%–55% of retired panels still produce substantial electricity, yet enter rural India untested—causing <strong>&gt;150°C thermal hotspot roof fires</strong> and electrocution risks.</li>
+<li><strong>Informal Dumping &amp; Acid Burning</strong>: Unorganized <em>kabadiwalas</em> strip aluminum frames and dump toxic lead-bearing glass in landfills or burn polymers in open fields.</li>
+</ol>
+<h2 id="14-the-regulatory-catalyst-indias-cpcb-category-ceew-14-mandate">1.4 The Regulatory Catalyst: India's CPCB Category CEEW-14 Mandate</h2>
+<p>Under India’s <strong>E-Waste (Management) Rules, 2022</strong> and <strong>CPCB Guidelines (2025–2026)</strong>:
+* Solar PV modules/cells are legally classified under <strong>Category CEEW-14</strong> with mandatory <strong>Extended Producer Responsibility (EPR)</strong> tracking through <strong>FY 2034–2035</strong>.
+* Open dumping and landfilling are strictly prohibited; producers and commercial power generators must maintain CPCB portal inventories and hand over waste exclusively to <strong>registered recyclers</strong>.
+* <strong>The Opportunity</strong>: Legal liability + fire-insurance pressure + massive retiring volume create an immediate, underserved white space for a <strong>trusted, fast, dual-sector lifecycle authority</strong>.</p>
+<hr />
+<h1 id="part-ii-brand-identity-the-gia-for-solar-trust-architecture">PART II: BRAND IDENTITY &amp; THE "GIA FOR SOLAR" TRUST ARCHITECTURE</h1>
+<h2 id="21-the-strategic-insight-one-system-two-interlocked-missions">2.1 The Strategic Insight: One System, Two Interlocked Missions</h2>
+<p>Treating 1,000 retired panels identically destroys value. <strong>SunSecond</strong> unifies two missions under one ironclad rule:
+* <strong>Mission A — Second-Life Qualification &amp; Liquidity (<code>SunSecond STDD</code> &amp; <code>Bazaar</code>)</strong>: Rapidly certify, repair, re-rate, and monetize every panel capable of safe electricity generation.
+* <strong>Mission B — Toxin-Free Resource Extraction (<code>SunSecond Extract</code>)</strong>: Cleanly strip, delaminate, and recover high-purity raw materials + CPCB EPR credits from every panel that fails safety or power thresholds.</p>
+<h2 id="22-solving-the-trust-paradox-zero-human-bias-cryptographic-grading">2.2 Solving the Trust Paradox (Zero-Human-Bias Cryptographic Grading)</h2>
+<p>When one company both <em>grades</em> and <em>buys/scraps</em> assets, owners fear false rejections and buyers fear false passes. SunSecond neutralizes this permanently via three mechanisms:
+1. <strong>On-Board Hardware Security Module (HSM)</strong>: Every raw sensor signal (I-V curve, <code>Riso</code>, thermal map, UVF photo) is ECDSA-signed inside an embedded <strong>ATECC608B chip</strong> before any human views it. Technicians cannot alter grades.
+2. <strong>"Glass-Box" Visual Evidence</strong>: Within 60 seconds, the owner receives a live WhatsApp link showing their panel's exact glowing hotspot or cracked UVF image. Visual proof eliminates argument instantly.
+3. <strong>The "Free-to-Walk" Rule</strong>: After grading, the owner owns their certificate and is 100% free to keep the panel or sell it elsewhere. Removing coercion proves honesty—causing &gt;80% of owners to choose SunSecond's seamless cash offer or free removal.</p>
+<h2 id="23-the-open-sunsecond-4s-standard-inventing-the-industry-language">2.3 The Open "SunSecond 4S" Standard (Inventing the Industry Language)</h2>
+<p>Just as <strong>GIA</strong> invented the <strong>4Cs</strong> (Cut, Color, Clarity, Carat) and gave the language away for free so the global diamond market could only speak GIA's vocabulary, SunSecond publishes the open <strong>4S Solar Protocol</strong>:
+1. <strong>S1 — Safety (<code>PASS</code> / <code>HAZARD</code>)</strong>: High-voltage dry/wet insulation resistance (<code>Riso</code>) &amp; ground continuity.
+2. <strong>S2 — Structure (<code>INTACT</code> / <code>STRESSED</code> / <code>CRACKED</code>)</strong>: UVF micro-crack map, glass integrity, and NIR backsheet polymer health.
+3. <strong>S3 — Silicon Health (<code>STRONG</code> / <code>REPAIRABLE</code> / <code>DEGRADED</code>)</strong>: Dark I-V series/shunt resistance ((R_s, R_{sh})), AC-IS moisture signature, and bypass diode check.
+4. <strong>S4 — Service Band (<code>SS-A+</code>, <code>SS-A</code>, <code>SS-R</code>, <code>SS-B</code>, <code>SS-F</code>)</strong>: Guaranteed true-wattage tier &amp; maximum allowed DC voltage.</p>
+<h2 id="24-the-5-step-playbook-to-become-the-unchallenged-standard">2.4 The 5-Step Playbook to Become the Unchallenged Standard</h2>
+<div class="mermaid">
+flowchart LR
+    P1[&quot;STEP 1 (M0–M3)\nInvent Language\nPublish Open 4S Spec&quot;] --&gt; P2[&quot;STEP 2 (M3–M9)\nBorrow Authority\n200-Panel Blind Study w/\nIIT Bombay / NISE / C-MET&quot;]
+    P2 --&gt; P3[&quot;STEP 3 (M9–M14)\nGlass-Box Proof\nHSM Visuals + Solar Blue Book\n+ Free-to-Walk Choice&quot;]
+    P3 --&gt; P4[&quot;STEP 4 (M14–M20)\nRisk Inversion\nInsured Swap Warranty (Pass) +\nFire &amp; CPCB Indemnity (Fail)&quot;]
+    P4 --&gt; P5[&quot;STEP 5 (M20–M36)\n4-Sided Lock-In\nInsurers, NBFCs, EPCs\n&amp; CPCB Mandate STDD&quot;]
+</div>
+<p>Once <strong>Fire Insurers</strong> require a SunSecond certificate to cover commercial roofs, <strong>Rural NBFCs / NABARD</strong> finance only SunSecond-QR solar pumps, <strong>EPCs</strong> embed SunSecond into repowering contracts, and <strong>CPCB Recyclers</strong> rely on SunSecond's HSM mass-balance manifests—<strong>SunSecond achieves an unbreakable 4-sided trust monopoly</strong>.</p>
+<hr />
+<h1 id="part-iii-end-to-end-technical-hardware-architecture">PART III: END-TO-END TECHNICAL &amp; HARDWARE ARCHITECTURE</h1>
+<h2 id="31-the-unified-sunsecond-machine-physical-to-digital-flow">3.1 The Unified SunSecond Machine (Physical-to-Digital Flow)</h2>
+<div class="mermaid">
+flowchart TD
+    Roof[&quot;Retired / Damaged Solar Panel\n(Home, Farm, Factory or Utility Park)&quot;] --&gt; T0[&quot;TIER 0: Smartphone Pre-Triage (₹0)\n3 Photos -&gt; AI filters shattered glass, burns &amp; CdTe&quot;]
+    
+    T0 --&gt;|&quot;Visibly Destroyed (~25%)&quot;| EX_In
+    T0 --&gt;|&quot;Intact (~75%)&quot;| Diag[&quot;TESTING SUITES (Decision-First Sensor Fusion)\n• Scout Backpack (₹1.4L) | Express-Van (₹14L) | Vault-Hub (₹30L)\n• HSM-Signed: Riso + Dark I-V/AC-IS + UVF + Pulse Thermal + NIR&quot;]
+    
+    Diag --&gt; Gate{&quot;HARD RED-LINE SAFETY GATE\nRiso Pass? Zero Severe Hotspots? Safe Glass?&quot;}
+    
+    Gate --&gt;|&quot;PASS SAFETY&quot;| Reuse[&quot;CASCADE REUSE ENGINE\n• SS-A+ (80–90%): Commercial SMEs (1000V)\n• SS-A (65–80%): Impp-Binned Agri Pumps\n• SS-R (Dead Diode): ₹250 Fix -&gt; SS-A\n• SS-B (45–65%): Keyed XT60 &lt;60V SELV Kits&quot;]
+    
+    Gate --&gt;|&quot;FAIL SAFETY OR &lt;45%\n(Even at 85% Output!)&quot;| EX_In[&quot;ON-SITE NEUTRALIZATION (SS-F)\nFlush-Cut MC4 Leads + Lock QR as &#x27;DANGER SCRAP&#x27;&quot;]
+    
+    EX_In --&gt; Scrap[&quot;TOXIN-FREE EXTRACTION SUITES\n• Suite 1: Extract-Pod (Al/Cu 48-hr Cash)\n• Suite 2: Extract-Box 20 (Off-Grid Container + Hot-Knife Glass)\n• Suite 3: Extract-Refinery (Dual Delam + MSA Electrowinning + EV-Si)&quot;]
+    
+    Reuse --&gt; Cash[&quot;DUAL-STREAM HIGH-VELOCITY CASH + GIA TRUST FLYWHEEL&quot;]
+    Scrap --&gt; Cash
+</div>
+<hr />
+<h2 id="32-decision-first-diagnostic-science-11-advanced-nde-technologies">3.2 Decision-First Diagnostic Science (11 Advanced NDE Technologies)</h2>
+<p><strong>Core Engineering Breakthrough</strong>: SunSecond abandons expensive (\pm 0.5\%) factory numeric metrology in favor of <strong>&gt;98% classification accuracy</strong> across <em>Safety, Structure, Silicon Health, and Power Band</em>—operating in <strong>&lt;45 seconds per panel, day or night, rain or shine</strong>.</p>
+<blockquote>
+<p><strong>CAUTION:</strong> &gt; <strong>The 14% Hidden Safety Trap (CSIRO &amp; IEA PVPS Task 13 Finding)</strong>: Empirical testing of thousands of retired panels proved that <strong>14%–15% of panels that pass BOTH I-V power curves AND Electroluminescence (EL) still FAIL wet-leakage electrical safety tests ("Dry Pass / Wet Fail")</strong>. Electrical insulation (<code>Riso</code>) is therefore SunSecond's mandatory Gate 1.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Domain</th>
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Technology / Method</th>
+<th style="text-align: left;">Faults Caught &amp; Strategic Value</th>
+<th style="text-align: center;">Speed</th>
+<th style="text-align: center;">Sun Needed?</th>
+<th style="text-align: center;">Hardware Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>A. Safety Veto</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>Dry Hi-Pot (<code>Riso,dry</code>)</strong></td>
+<td style="text-align: left;">Frame shorts, punctured backsheets (IEC 61730) — instant rooftop veto</td>
+<td style="text-align: center;">3s</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">₹15k–₹35k</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><strong>Rapid Conductive-Mist Wet Leakage (<code>Riso,wet</code>)</strong></td>
+<td style="text-align: left;">Surfactant-wetted conductive foam/mist bed replaces 10-min water tank; catches <strong>14% Dry-Pass/Wet-Fail trap</strong> ((&gt;40\text{ M}\Omega\cdot\text{m}^2))</td>
+<td style="text-align: center;">15–20s</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">₹40k–₹80k</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><strong>Partial Discharge (PD) / Capacitive Transient</strong></td>
+<td style="text-align: left;">Filters parasitic module capacitance spikes; catches internal EVA micro-voids &amp; arcing paths</td>
+<td style="text-align: center;">3s</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">In Hi-Pot</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>B. Electrical Fingerprinting</strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;"><strong>Dark I-V Sweep + Bypass Diode Pulse</strong></td>
+<td style="text-align: left;">Sweeps panel as diode matrix in shade; isolates (R_s) (solder fatigue), (R_{sh}) (PID/shunts), (n), and <strong>₹150 repairable diodes (<code>SS-R</code>)</strong></td>
+<td style="text-align: center;"><strong>2s</strong></td>
+<td style="text-align: center;"><strong>NO</strong></td>
+<td style="text-align: center;">₹25k–₹60k</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;"><strong>AC Impedance Spectroscopy (AC-IS)</strong></td>
+<td style="text-align: left;">10 Hz–100 kHz AC sweep; Nyquist plots catch <strong>moisture ingress</strong> (capacitance shift) &amp; <strong>early solder intermetallic corrosion</strong></td>
+<td style="text-align: center;">3s</td>
+<td style="text-align: center;"><strong>NO</strong></td>
+<td style="text-align: center;">In Dark I-V DSP</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;"><strong>SSTDR (Live-String Radar)</strong></td>
+<td style="text-align: left;">Injects pseudo-noise RF code into live 1000V strings; locates bad connectors/ribbons before unmounting</td>
+<td style="text-align: center;">10s/str</td>
+<td style="text-align: center;">Live</td>
+<td style="text-align: center;">₹1.2L–₹2.5L</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: left;"><strong>2-Sec Reference Optical / Mini-Flash</strong></td>
+<td style="text-align: left;">Closes Dark I-V's sole blind spot: detects EVA browning / glass opacity loss ((\pm 4\%) band accuracy)</td>
+<td style="text-align: center;">3s</td>
+<td style="text-align: center;">Amb/LED</td>
+<td style="text-align: center;">₹15k–₹30k</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>C. Visual Proof</strong></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;"><strong>365 nm UV Fluorescence (UVF)</strong></td>
+<td style="text-align: left;"><strong>NREL/Fraunhofer EL-Killer</strong>: Aged EVA glows yellow-green; oxygen along cell cracks photobleaches them into <strong>sharp dark lines</strong>. Zero wiring!</td>
+<td style="text-align: center;"><strong>5s</strong></td>
+<td style="text-align: center;">Shade hood</td>
+<td style="text-align: center;"><strong>₹5k–₹15k</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: left;"><strong>Active Pulse Thermography</strong></td>
+<td style="text-align: left;">3-sec DC current pulse + 256×192 LWIR camera exposes glowing hotspots indoors/at night (<strong>#1 visual trust tool</strong>)</td>
+<td style="text-align: center;">8s</td>
+<td style="text-align: center;"><strong>NO</strong></td>
+<td style="text-align: center;">₹20k–₹45k</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: left;"><strong>Daylight Lock-In PL / EL (UNSW)</strong></td>
+<td style="text-align: left;">Modulated current/inverter switching + differential NIR frame subtraction cancels midday sunlight; spots fresh cracks</td>
+<td style="text-align: center;">10s</td>
+<td style="text-align: center;">Daylight</td>
+<td style="text-align: center;">₹2.5L–₹5L</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>D. Chemistry</strong></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: left;"><strong>Portable NIR Spectroscopy (900–1700 nm)</strong></td>
+<td style="text-align: left;">3-sec touch probe (TI DLP NIRscan Nano + ML): flags brittle Polyamide/AAA backsheets <strong>AND</strong> separates fluorinated PVDF vs. PET scrap</td>
+<td style="text-align: center;">3s</td>
+<td style="text-align: center;"><strong>NO</strong></td>
+<td style="text-align: center;">₹1.5L–₹3L</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sensor-fusion-blind-spot-elimination-matrix">Sensor-Fusion Blind-Spot Elimination Matrix</h3>
+<ul>
+<li><strong>Dark I-V is blind to yellowed glass</strong> $\rightarrow$ Covered by 2-sec Optical Check &amp; UVF hue!</li>
+<li><strong>UVF cannot see fresh transport cracks (&lt;3 mo)</strong> $\rightarrow$ Covered by Dark I-V (R_s) jump, Active Thermal &amp; Hub EL!</li>
+<li><strong>Dry Hi-Pot misses 14% moisture paths</strong> $\rightarrow$ Covered by Rapid Mist Wet-Leakage (<code>Riso,wet</code>) &amp; AC-IS moisture capacitance!</li>
+<li><strong>Combined Multi-Modal Decision Accuracy</strong>: <strong>98.5%–99.5%</strong> at <strong>&lt; ₹85/panel</strong>.</li>
+</ul>
+<hr />
+<h2 id="33-the-three-modular-testing-suites-right-sized-portability">3.3 The Three Modular Testing Suites (Right-Sized Portability)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Testing Suite</th>
+<th style="text-align: left;">Form Factor &amp; Target</th>
+<th style="text-align: left;">Core Hardware &amp; Custom Electronics</th>
+<th style="text-align: center;">CapEx</th>
+<th style="text-align: center;">Throughput</th>
+<th style="text-align: center;">Test Cost / Panel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. <code>SunSecond Scout</code></strong> <em>(Ultra-Portable)</em></td>
+<td style="text-align: left;">6.5 kg Motorbike Backpack | Homes, Farmers, Shops (1–30 panels)</td>
+<td style="text-align: left;">Custom <strong><code>PFA-1</code> Box</strong> (Dual-core <strong>STM32H7</strong> DSP, 0–60V/15A MOSFET Dark I-V/AC-IS driver, 1000V flyback Megger, <strong>ATECC608B HSM</strong>, 48V LFP battery) + Pop-up 365 nm UVF Hood + USB-C LWIR Thermal + Ref Photodiode</td>
+<td style="text-align: center;"><strong>₹1.2–₹1.5 Lakh</strong></td>
+<td style="text-align: center;">80–120 / day <em>(30s/panel)</em></td>
+<td style="text-align: center;"><strong>~₹75</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. <code>SunSecond Express-Van</code></strong> <em>(Semi-Portable)</em></td>
+<td style="text-align: left;">Autonomous Solar/LFP Commercial Van | Factories &amp; EPC Repowering (50–2,000 panels)</td>
+<td style="text-align: left;"><code>Scout</code> Core + <strong>SSTDR String Radar</strong> + <strong>2-Panel Surfactant-Mist Wet-Leakage Drawer</strong> + <strong>Daylight Lock-In EL</strong> + <strong>Portable NIR Probe</strong> + Laser QR Printer</td>
+<td style="text-align: center;"><strong>₹12–₹16 Lakh</strong> <em>(12× cheaper than MBJ!)</em></td>
+<td style="text-align: center;">250–400 / day</td>
+<td style="text-align: center;"><strong>~₹55</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. <code>SunSecond Vault-Hub</code></strong> <em>(Fixed Regional Tunnel)</em></td>
+<td style="text-align: left;">City Hub Conveyor | Bankable 5-Yr Warranted Pallets &amp; Bulk Sorting</td>
+<td style="text-align: left;">Wash $\rightarrow$ Parallel 4-Panel IEC Wet-Leakage Bed $\rightarrow$ Enclosed <strong>Multi-Spectral LED Flash ((\pm 2\%)) + High-Res EL Tunnel</strong> $\rightarrow$ Smart J-Box Repair Bench $\rightarrow$ Auto (I_{mpp}) Binner</td>
+<td style="text-align: center;"><strong>₹28–₹35 Lakh</strong></td>
+<td style="text-align: center;">600–1,000 / day</td>
+<td style="text-align: center;"><strong>~₹42</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="34-multi-tier-cascade-reuse-hardware-poka-yoke-mistake-proofing">3.4 Multi-Tier Cascade Reuse &amp; Hardware <em>Poka-Yoke</em> (Mistake-Proofing)</h2>
+<p>GIA never loses reputation grading budget diamonds because <strong>every grade states the exact truth</strong>. SunSecond extracts every safe watt across 4 positive tiers while enforcing a strict safety red line:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Grade</th>
+<th style="text-align: left;">Verified Condition</th>
+<th style="text-align: left;">Target Indian &amp; Global Applications</th>
+<th style="text-align: left;">Electronics Engineering Enabler</th>
+<th style="text-align: left;">Pricing &amp; Warranty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>SS-A+</code> (Prime)</strong></td>
+<td style="text-align: left;">80%–90% power; full <code>Riso,wet</code> pass; zero severe cracks</td>
+<td style="text-align: left;">SME factories, cold storage, dairy chillers, petrol pumps, EV sheds (commercial tariffs ₹9–₹14/kWh $\rightarrow$ &lt;1.8 yr payback)</td>
+<td style="text-align: left;">Full Hub qualification + 1000V DC string rating</td>
+<td style="text-align: left;"><strong>₹10–₹13/W</strong> | 3–5 Yr Insured Swap</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>SS-A</code> (Workhorse)</strong></td>
+<td style="text-align: left;">65%–80% power; safe insulation; mild uniform aging</td>
+<td style="text-align: left;">Agricultural solar pumps, poultry farms, <em>atta chakkis</em>, brick kilns, telecom towers, rural microgrids</td>
+<td style="text-align: left;"><strong>Automated (I_{mpp}) Current-Binning</strong> ((\pm 0.25\text{ A}) matched pallets = zero series mismatch loss)</td>
+<td style="text-align: left;"><strong>₹8–₹10/W</strong> | 2 Yr Replacement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>SS-R</code> (Repairable)</strong></td>
+<td style="text-align: left;">&gt;70% healthy cells, dead bypass diode / burnt J-box</td>
+<td style="text-align: left;">Promoted to <code>SS-A</code> after ₹250 fix (<strong>&gt;240% gross margin!</strong>)</td>
+<td style="text-align: left;"><strong>Active Ideal-Diode Smart J-Box</strong> (MOSFETs drop 15 mV vs. overheating Schottky diodes)</td>
+<td style="text-align: left;">Promoted to <code>SS-A</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>SS-B</code> (SELV Micro-DC)</strong></td>
+<td style="text-align: left;">45%–65% power OR <strong>1 dead substring</strong> (2 healthy substrings = 150–190W @ 24V)</td>
+<td style="text-align: left;"><strong>STRICTLY &lt;60V DC Standalone</strong>: Kirana 12V inverter charging, E-rickshaw 48V roofs, farm <em>jhatka</em> fences, streetlights, pond aerators, IoT</td>
+<td style="text-align: left;">Isolate dead substring + deploy strictly in <strong>SELV (&lt;60V DC)</strong> where electrocution &amp; arc-fire risk drops to ~0</td>
+<td style="text-align: left;"><strong>₹6–₹8/W</strong> (or ₹4,499 Power Kits) | 1 Yr Swap</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>SS-F</code> (Condemned)</strong></td>
+<td style="text-align: left;"><strong>&lt;45% power OR ANY safety/insulation/hotspot/glass failure</strong> <em>(even at 85% output!)</em></td>
+<td style="text-align: left;"><strong>ZERO electrical reuse</strong> (never cut silicon cells out of EVA) $\rightarrow$ <code>SunSecond Extract</code></td>
+<td style="text-align: left;">Flush-cut MC4 leads on-site + Lock cloud QR <strong><code>DANGER: CONDEMNED</code></strong></td>
+<td style="text-align: left;">CPCB EPR Handover</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Three Anti-Fraud Hardware Controls (<em>Poka-Yoke</em>)</strong>:
+1. <strong>Tamper-Evident True-Wattage Plate</strong>: Permanently covers the old factory <code>330W</code> sticker with guaranteed real output (e.g., <code>SunSecond Certified: 175W ±5% | Max 60V DC ONLY</code>; leaves <code>VOID</code> pattern if peeled).
+2. <strong>Physical Connector Keying</strong>: Tier 3 (<code>SS-B</code>) swaps 1000V MC4 plugs for <strong>keyed 60V XT60 / Anderson plugs</strong>—making it physically impossible to plug a degraded panel into a 1000V commercial inverter.
+3. <strong>Color-Coded Seals</strong>: <strong>GREEN</strong> (<code>SS-A+</code>/<code>SS-A</code>), <strong>AMBER</strong> (<code>SS-B</code> &lt;60V Only), <strong>RED Perforated</strong> (<code>SS-F</code> Condemned).</p>
+<hr />
+<h2 id="35-toxin-free-extraction-science-10-methods-the-three-scrapping-suites">3.5 Toxin-Free Extraction Science (10 Methods) &amp; The Three Scrapping Suites</h2>
+<p>Roughly <strong>65%–70%</strong> of <code>SS-F</code> panels arrive with <strong>intact glass</strong> and <strong>30%–35%</strong> with <strong>shattered glass</strong>. SunSecond deploys a <strong>Dual-Path Clean Delamination Engine</strong> paired with <strong>Toxin-Free Closed-Loop Electrochemistry</strong>—strictly banning hammer-mills, open pyrolysis, and Nitric Acid.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Method / Tech</th>
+<th style="text-align: left;">Physics &amp; Role</th>
+<th style="text-align: center;">Toxin-Free</th>
+<th style="text-align: center;">Speed / Panel</th>
+<th style="text-align: center;">India CapEx</th>
+<th style="text-align: left;"><strong>SunSecond Verdict</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Pneumatic Frame &amp; J-Box Stripper</strong></td>
+<td style="text-align: left;">Pulls pure 6063-T5 Al rails + shears Cu J-box (100% dry)</td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: center;">35s</td>
+<td style="text-align: center;">₹3.5L</td>
+<td style="text-align: left;">✅ <strong>ADOPT DAY 1</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Portable NIR Chemistry Gate</strong></td>
+<td style="text-align: left;">Separates PET vs. fluorinated PVDF (zero HF hazard) vs. CdTe</td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: center;">3s</td>
+<td style="text-align: center;">₹2.0L</td>
+<td style="text-align: left;">✅ <strong>ADOPT PHASE 1</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Path A (Intact): <code>Hot-Knife</code> Peeler</strong></td>
+<td style="text-align: left;">PID blade at <strong>~285°C</strong> (below EVA pyrolysis) yields <strong>unbroken flat solar glass (6×–9× value)</strong></td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: center;">45–60s</td>
+<td style="text-align: center;">₹18L–₹28L</td>
+<td style="text-align: left;">✅ <strong>ADOPT PHASE 2</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Path B (Shattered): Roller / Water-Jet</strong></td>
+<td style="text-align: left;">Diamond micro-rollers w/ HEPA suction or closed-loop water-jet strips glass shards cleanly</td>
+<td style="text-align: center;">★★★★☆</td>
+<td style="text-align: center;">60s</td>
+<td style="text-align: center;">₹15L–₹22L</td>
+<td style="text-align: left;">✅ <strong>ADOPT PHASE 2</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5. Green MSA + Electrowinning (Ag)</strong></td>
+<td style="text-align: left;">Biodegradable <strong>Methanesulfonic Acid + (\text{H}_2\text{O}_2)</strong> dissolves 95–99% Ag w/ <strong>zero (\text{NO}_x)</strong>; potentiostat plates <strong>99.9% Ag</strong> &amp; regenerates acid (ZLD!)</td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: center;">Inline Batch</td>
+<td style="text-align: center;">₹45L–₹80L</td>
+<td style="text-align: left;">✅ <strong>PARTNER PH-1 $\rightarrow$ OWN PH-2/3</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>6. Dry Electrostatic &amp; Eddy-Current</strong></td>
+<td style="text-align: left;">Splits polymer flakes from Cu-Sn busbars &amp; pure 6N silicon (&gt;98% purity)</td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: center;">Continuous</td>
+<td style="text-align: center;">₹12L–₹18L</td>
+<td style="text-align: left;">✅ <strong>ADOPT PHASE 2/3</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>7. Solar-Si $\rightarrow$ EV Battery Anodes</strong></td>
+<td style="text-align: left;">Ball-mills &amp; carbon-coats 6N solar silicon into Li-Ion <strong>Si-C anode precursor</strong> (5×–10× value)</td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: center;">Batch</td>
+<td style="text-align: center;">Partner/Ph-3</td>
+<td style="text-align: left;">✅ <strong>SCALE PHASE 3</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>8. HVPF (SELFRAG High-Voltage Pulse)</strong></td>
+<td style="text-align: left;">100–200 kV underwater nanosecond shockwaves liberate along dielectric interfaces</td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: center;">Batch</td>
+<td style="text-align: center;">High</td>
+<td style="text-align: left;">⏳ <strong>DEFER TO PHASE 3</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>9. Laser / HIPL Optical Debonding</strong></td>
+<td style="text-align: left;">Millisecond photonic flash pops glass-EVA bond via (\text{SiN}_x) absorption</td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: center;">20–30s</td>
+<td style="text-align: center;">High</td>
+<td style="text-align: left;">⏳ <strong>R&amp;D WATCH (2028+)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>10. Shredding / Pyrolysis / Nitric / (\text{LN}_2)</strong></td>
+<td style="text-align: left;">Shredding loses ₹10k/t; Pyrolysis/Nitric emit toxic HF/(\text{NO}_x); Cryogenic OpEx too costly</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">Varies</td>
+<td style="text-align: center;">Varies</td>
+<td style="text-align: left;">❌ <strong>STRICTLY BANNED</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Closed-Loop Toxin-Free Silver Leaching Chemistry (Zero (\text{NO}_x) Fumes, ZLD)</strong>:
+$$2\text{Ag} + \text{H}_2\text{O}_2 + 2\text{CH}_3\text{SO}_3\text{H} \longrightarrow 2\text{Ag}^+ + 2(\text{CH}_3\text{SO}_3)^- + 2\text{H}_2\text{O}$$</p>
+<h3 id="the-three-modular-scrapping-suites-cutting-logistics-weight-6588">The Three Modular Scrapping Suites (Cutting Logistics Weight 65%–88%)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Scrapping Suite</th>
+<th style="text-align: left;">Deployment &amp; Tools</th>
+<th style="text-align: center;">CapEx</th>
+<th style="text-align: center;">Throughput</th>
+<th style="text-align: center;">Freight Cut</th>
+<th style="text-align: center;">Net Profit / Panel</th>
+<th style="text-align: center;">Payback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. <code>Extract-Pod</code></strong> <em>(Pickup / Spoke)</em></td>
+<td style="text-align: left;">Day-1 Unit-1 kit: Pneumatic 6063 Al puller, J-box shear, HSM load-cell scale</td>
+<td style="text-align: center;"><strong>₹4.5–₹6.0L</strong></td>
+<td style="text-align: center;">30–40 / hr</td>
+<td style="text-align: center;"><strong>65% vol</strong></td>
+<td style="text-align: center;"><strong>+₹650</strong> <em>(Ph-1 Tolling)</em></td>
+<td style="text-align: center;"><strong>3–4 Mo</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. <code>Extract-Box 20</code></strong> <em>(20-ft Solar Container)</em></td>
+<td style="text-align: left;">Autonomous PV+LFP container deployed directly to utility solar parks: Auto stripper + NIR + <strong>Inline Hot-Knife Glass Peeler</strong> (Glass ships to local furnace; <strong>only 1.2 kg/panel Ag-Si concentrate</strong> travels to refinery — 8,000 panels/truck!)</td>
+<td style="text-align: center;"><strong>₹28–₹42L</strong></td>
+<td style="text-align: center;">100–120 / hr</td>
+<td style="text-align: center;"><strong>88% wt</strong></td>
+<td style="text-align: center;"><strong>+₹1,250</strong></td>
+<td style="text-align: center;"><strong>7–9 Mo</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. <code>Extract-Refinery</code></strong> <em>(Regional ZLD Hub)</em></td>
+<td style="text-align: left;">Phase 2/3 Hub (5,000–10,000 t/yr): Dual Intact/Shattered delamination + Closed-Loop MSA Electrowinning + EV-Si milling</td>
+<td style="text-align: center;"><strong>₹1.5–₹2.5 Cr</strong></td>
+<td style="text-align: center;">5k–10k t/yr</td>
+<td style="text-align: center;">Regional</td>
+<td style="text-align: center;"><strong>+₹1,960</strong></td>
+<td style="text-align: center;"><strong>12–16 Mo</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embedded Electronics Controls Guaranteeing GIA-Grade Cleanliness</strong>:
+* <strong>STM32/PLC Thermal-Torque PID</strong> holds Hot-Knife strictly at <strong>285°C (\pm) 3°C</strong> and retracts in 20 ms on hidden cracks.
+* <strong>MEMS HF &amp; VOC Air-Safety Interlock</strong> auto-halts heaters if fluorinated PVDF spikes &gt;1 ppm.
+* <strong>Potentiostat CV/CC Buck Rectifier</strong> selectively plates <strong>99.9% Ag</strong> while isolating Cu/Pb.
+* <strong>HSM-Signed Automated Load-Cell Conveyors</strong> cryptographically prove mass balance onto the CPCB EPR portal:
+  $$W_{\text{input}} = W_{\text{Al}} + W_{\text{Cu}} + W_{\text{Glass}} + W_{\text{Ag-Si}} + W_{\text{Polymer}} \quad (\pm 1\%)$$</p>
+<hr />
+<h1 id="part-iv-the-commercial-engine-high-velocity-monetization">PART IV: THE COMMERCIAL ENGINE &amp; HIGH-VELOCITY MONETIZATION</h1>
+<h2 id="41-the-stockx-spinny-gia-3-engine-platform">4.1 The "StockX + Spinny + GIA" 3-Engine Platform</h2>
+<p>Ordinary buyers (farmers, shopkeepers, SME owners) do not buy <code>Impp</code> specs—they buy <strong>guaranteed monthly electricity savings</strong>. <code>SunSecond.in</code> (Web + WhatsApp) provides a <strong>3-Click Outcome Wizard</strong> (<em>What do you want to power? $\rightarrow$ How much space? $\rightarrow$ Pick Savings &amp; Warranty</em>) powered by three synchronized cash engines:
+1. <strong>Engine 1 — Verify-to-Ship Managed Marketplace (StockX Model | 0% Inventory Risk)</strong>: Sellers list SunSecond-certified panels; buyer funds stay in <strong>Escrow</strong> and release only after the buyer scans the tamper-proof NFC/QR seal upon delivery (<strong>12%–18% commission</strong>).
+2. <strong>Engine 2 — Proprietary Cherry-Pick Repairs &amp; Plug-and-Play Power Kits (Spinny Model | 50%–240% Margin)</strong>: Use SunSecond cash <em>only</em> on <code>SS-R</code> diode repairs and pre-wired <strong>Outcome Power Boxes</strong> (e.g., 2× <code>SS-B</code> 175W panels + 20A controller + keyed XT60 cables sold for <strong>₹4,499</strong>—doubling profit while eliminating wiring errors).
+3. <strong>Engine 3 — Pure-Profit GIA Label Licensing &amp; Technician SaaS (80%–90% Margin)</strong>: Lease <code>Scout</code> kits to independent electricians (<strong>₹3,999/mo + ₹50/certificate</strong>) and license tamper-proof STDD badges to EPCs/refurbishers (<strong>₹150–₹250/panel</strong>).</p>
+<h2 id="42-the-10-stacked-revenue-streams-zero-cheat-psychology">4.2 The 10 Stacked Revenue Streams &amp; Zero-Cheat Psychology</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Revenue Stream</th>
+<th style="text-align: left;">Pricing Mechanism</th>
+<th style="text-align: center;">Gross Margin</th>
+<th style="text-align: center;">Cash Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>On-Site Testing &amp; STDD Audit</strong></td>
+<td style="text-align: left;">₹149–₹249/panel (Home) | ₹99–₹150/panel (Bulk); waived on buyback</td>
+<td style="text-align: center;">65%</td>
+<td style="text-align: center;">Day 0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><strong>Managed Marketplace Escrow</strong></td>
+<td style="text-align: left;">12%–18% commission on seller-owned certified panels</td>
+<td style="text-align: center;">85%</td>
+<td style="text-align: center;">7–14 Days</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><strong><code>SS-R</code> Repair Arbitrage</strong></td>
+<td style="text-align: left;">Buy dead-diode panels @ ₹450 $\rightarrow$ ₹250 fix $\rightarrow$ sell @ ₹2,100–₹2,600</td>
+<td style="text-align: center;">70%+</td>
+<td style="text-align: center;">15–20 Days</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;"><strong>Plug-and-Play Power Kits</strong></td>
+<td style="text-align: left;">35%–45% bundle markup on pre-wired controllers, cables &amp; stands</td>
+<td style="text-align: center;">45%–55%</td>
+<td style="text-align: center;">Instant–15d</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;"><strong>GIA Label Licensing ("STDD Inside")</strong></td>
+<td style="text-align: left;">₹0.50–₹1.00/W (₹150–₹250/panel) for official tamper-proof seals</td>
+<td style="text-align: center;">90%</td>
+<td style="text-align: center;">Day 0</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;"><strong>Technician <code>Scout</code> SaaS Franchise</strong></td>
+<td style="text-align: left;">₹3,999/mo hardware lease + ₹50/cryptographic certificate API fee</td>
+<td style="text-align: center;">80%</td>
+<td style="text-align: center;">Monthly</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: left;"><strong>Extended Warranty Shield</strong></td>
+<td style="text-align: left;">Optional 3–5 yr swap shield (₹399–₹699/panel; &lt;1.5% actuarial failure)</td>
+<td style="text-align: center;">75%+</td>
+<td style="text-align: center;">Day 0</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;"><strong>Embedded NBFC EMI Fintech</strong></td>
+<td style="text-align: left;">3%–5% loan referral fee from rural/SME NBFC partners (3× conversion)</td>
+<td style="text-align: center;">95%</td>
+<td style="text-align: center;">Day 1</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td style="text-align: left;"><strong>48-Hr Spoke Metal Liquidation (<code>SS-F</code>)</strong></td>
+<td style="text-align: left;">Paid compliance intake + instant Green 6063 Al &amp; Cu cash</td>
+<td style="text-align: center;">60%</td>
+<td style="text-align: center;">2 Days</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: left;"><strong>Clean Refining, EPR &amp; Carbon Credits</strong></td>
+<td style="text-align: left;">Hot-Knife glass + MSA Ag + EV-Si share + CPCB CEEW-14 EPR + CCTS Carbon</td>
+<td style="text-align: center;">50%–70%</td>
+<td style="text-align: center;">30–45 Days</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why Neither Side Ever Feels Cheated</strong>: SunSecond publishes a live <strong>"Solar Blue Book"</strong> (transparent daily ₹/W rates) and offers sellers a <strong>Two-Door Choice</strong>—<em>Door 1: Instant UPI Cash Today</em> (70–75% of retail) OR <em>Door 2: List at 100% Retail</em> (15% fee only upon sale). Buyers pay strictly per <strong>Verified True Watt</strong> under Escrow protection.</p>
+<h2 id="43-scrap-unit-economics-proof-flipping-ceews-loss-into-profit-per-tonne-50-panels">4.3 Scrap Unit Economics Proof: Flipping CEEW's Loss Into Profit (Per Tonne / 50 Panels)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Line Item (Per Metric Tonne <code>SS-F</code>)</th>
+<th style="text-align: center;">Illegal <em>Kabadiwala</em></th>
+<th style="text-align: center;">Conventional Shredding <em>(CEEW)</em></th>
+<th style="text-align: center;"><strong>SunSecond Extract — Ph 1 (<code>Extract-Pod</code> + Tolling)</strong></th>
+<th style="text-align: center;"><strong>SunSecond Extract — Ph 2 (<code>Extract-Box</code> / <code>Refinery</code> + EV-Si)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Feedstock Cost / Compliance Fee</strong></td>
+<td style="text-align: center;">-₹15,000</td>
+<td style="text-align: center;">-₹10,000</td>
+<td style="text-align: center;"><strong>+₹5,000</strong> <em>(Net Avg Fee)</em></td>
+<td style="text-align: center;"><strong>+₹7,500</strong> <em>(Enterprise ESG)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Green Aluminum (115 kg) &amp; Cu (18 kg)</strong></td>
+<td style="text-align: center;">+₹22,000</td>
+<td style="text-align: center;">+₹24,000</td>
+<td style="text-align: center;"><strong>+₹32,000</strong> <em>(6063 Premium)</em></td>
+<td style="text-align: center;"><strong>+₹34,000</strong> <em>(6063 Premium)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Low-Iron Solar Glass (725 kg)</strong></td>
+<td style="text-align: center;">₹0</td>
+<td style="text-align: center;">+₹1,500</td>
+<td style="text-align: center;"><strong>+₹9,500</strong> <em>(Clean Cullet)</em></td>
+<td style="text-align: center;"><strong>+₹12,500</strong> <em>(Solar Sheet)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Legacy Silver (~750–900g/tonne)</strong></td>
+<td style="text-align: center;">₹0</td>
+<td style="text-align: center;">+₹22,000</td>
+<td style="text-align: center;"><strong>+₹55,000</strong> <em>(Tolling Share)</em></td>
+<td style="text-align: center;"><strong>+₹68,000</strong> <em>(MSA Electrowin)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>6N Silicon (~32 kg/tonne)</strong></td>
+<td style="text-align: center;">₹0</td>
+<td style="text-align: center;">+₹3,500</td>
+<td style="text-align: center;"><strong>+₹6,500</strong> <em>(Met-Si / Kerf)</em></td>
+<td style="text-align: center;"><strong>+₹28,000</strong> <em>(EV Si-Anode)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CPCB EPR + CCTS Carbon Credits</strong></td>
+<td style="text-align: center;">₹0</td>
+<td style="text-align: center;">₹0</td>
+<td style="text-align: center;"><strong>+₹12,500</strong></td>
+<td style="text-align: center;"><strong>+₹16,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Logistics, Strip &amp; Refining Cost</strong></td>
+<td style="text-align: center;">-₹3,000</td>
+<td style="text-align: center;">-₹61,230</td>
+<td style="text-align: center;"><strong>-₹58,000</strong></td>
+<td style="text-align: center;"><strong>-₹68,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NET PROFIT / (LOSS) PER TONNE</strong></td>
+<td style="text-align: center;"><em>+₹4,000 (Illegal)</em></td>
+<td style="text-align: center;"><strong>-₹10,230 (LOSS)</strong></td>
+<td style="text-align: center;"><strong>+₹62,500 (+₹1,250/panel)</strong></td>
+<td style="text-align: center;"><strong>+₹98,000 (+₹1,960/panel)</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="part-v-ground-reality-financials-unit-1-launch-wealth-creation">PART V: GROUND-REALITY FINANCIALS, UNIT-1 LAUNCH &amp; WEALTH CREATION</h1>
+<h2 id="51-unit-1-launch-blueprint-minimum-complete-dual-sector-hub">5.1 Unit-1 Launch Blueprint (Minimum Complete Dual-Sector Hub)</h2>
+<ul>
+<li><strong>Launch Belt</strong>: Industrial outskirt of <strong>Ahmedabad/Sanand (Gujarat)</strong>, <strong>Jaipur (Rajasthan)</strong>, or <strong>Pune/Chakan (Maharashtra)</strong> (3–5 GW installed within 150 km $\rightarrow$ ~1,50,000+ retiring panels/year; Unit-1 requires just <strong>800 panels/month</strong>, &lt;6.5% local capture).</li>
+<li><strong>Day-1 CapEx Discipline</strong>: Deploy <code>Scout</code> + <code>Extract-Pod</code> + <code>SS-R</code> Repair in-house; toll Stage-3 chemical silver/silicon refining through a CPCB-registered partner until Volume justifies <code>Extract-Box 20</code> and <code>Extract-Refinery</code>.</li>
+</ul>
+<h3 id="minimum-initial-capital-required-2300-lakh-27500-usd">Minimum Initial Capital Required: ₹23.00 Lakh (~$27,500 USD)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Setup Category</th>
+<th style="text-align: left;">Exact Unit-1 Assets &amp; Infrastructure</th>
+<th style="text-align: center;">Capital (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Testing &amp; STDD Hardware</strong></td>
+<td style="text-align: left;">2× <code>Scout</code> Backpack Kits (₹2.80L) + 1× Spoke Rapid Mist Wet-Leakage &amp; Ref Flasher Bench (₹1.80L)</td>
+<td style="text-align: center;"><strong>₹4,60,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. <code>Extract-Pod</code> &amp; Repair Lab</strong></td>
+<td style="text-align: left;">Pneumatic 6063 Al Frame Puller + J-Box Shear + Glass Table + Load-Cell Scale (₹3.50L) + Repair Bench &amp; NFC/QR Printer (₹0.90L)</td>
+<td style="text-align: center;"><strong>₹4,40,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Facility &amp; Logistics</strong></td>
+<td style="text-align: left;">2,200 sq ft Shed Deposit (3 mo @ ₹40k) + Racks/Pallet Jack (₹2.00L) + Pickup Van Downpayment &amp; Padded A-Frame Racks (₹2.20L)</td>
+<td style="text-align: center;"><strong>₹4,20,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Legal, CPCB MoU &amp; Software</strong></td>
+<td style="text-align: left;">Pvt Ltd, GST, SPCB Collection Auth, CPCB Recycler MoU, Cloud Ledger &amp; WhatsApp Outcome Bot MVP</td>
+<td style="text-align: center;"><strong>₹1,80,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FIXED SETUP CAPEX SUBTOTAL</strong></td>
+<td style="text-align: left;"><strong>Complete Dual-Sector Operational Hub</strong></td>
+<td style="text-align: center;"><strong>₹15,00,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5. Working Capital &amp; Buffer</strong></td>
+<td style="text-align: left;">Instant UPI Buyback Float (₹4.00L) + 3-Month Survival Runway (₹4.00L)</td>
+<td style="text-align: center;"><strong>₹8,00,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GRAND TOTAL LAUNCH CAPITAL</strong></td>
+<td style="text-align: left;"><strong>All-In Minimum Budget</strong> <em>(Ultra-lean DST NIDHI-PRAYAS Student Grant Path: ₹8.5–₹10L)</em></td>
+<td style="text-align: center;"><strong>₹23,00,000</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="52-day-to-day-running-costs-fixed-monthly-opex-300-lakh">5.2 Day-to-Day Running Costs (Fixed Monthly OpEx = ₹3.00 Lakh)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Monthly Operating Head</th>
+<th style="text-align: left;">Breakdown</th>
+<th style="text-align: center;">Monthly Cost (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Workshop Rent</strong></td>
+<td style="text-align: left;">2,200 sq ft industrial outskirt shed (3-phase power)</td>
+<td style="text-align: center;">₹40,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Core Team Payroll (6 + Founder)</strong></td>
+<td style="text-align: left;">2 Field Techs (₹44k) + 2 Workshop Staff (₹36k) + 1 Ops/Sales (₹30k) + 1 Driver (₹18k) + Founder Stipend (₹30k)</td>
+<td style="text-align: center;">₹1,58,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pickup Van Operations</strong></td>
+<td style="text-align: left;">EMI (₹16k) + Diesel/EV Charging (₹20k) + Maintenance/Tolls (₹6k)</td>
+<td style="text-align: center;">₹42,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Utilities &amp; Cloud Stack</strong></td>
+<td style="text-align: left;">Electricity, Water, Fiber, Cloud Server, WhatsApp Business API</td>
+<td style="text-align: center;">₹18,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Consumables &amp; Outreach</strong></td>
+<td style="text-align: left;">Tamper NFC/QR Seals, Packaging, EPC Outreach, Rural Meta/WhatsApp Ads</td>
+<td style="text-align: center;">₹22,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Insurance &amp; Warranty Reserve</strong></td>
+<td style="text-align: left;">Facility Fire/Liability Insurance + Baseline Swap Reserve</td>
+<td style="text-align: center;">₹20,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TOTAL MONTHLY OPEX</strong></td>
+<td style="text-align: left;"><strong>Fixed Monthly Burn</strong></td>
+<td style="text-align: center;"><strong>₹3,00,000 / mo</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="53-conservative-monthly-pl-break-even-payback-curve-800-panelsmo">5.3 Conservative Monthly P&amp;L, Break-Even &amp; Payback Curve (800 Panels/Mo)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Monthly Revenue Stream (800 Panels)</th>
+<th style="text-align: center;">Volume</th>
+<th style="text-align: center;">Conservative Net Contribution / Panel</th>
+<th style="text-align: center;">Monthly Cash (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Managed Marketplace Resale (<code>SS-A</code>/<code>SS-B</code>)</td>
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">₹315 <em>(15% commission on ₹2,100 avg)</em></td>
+<td style="text-align: center;">₹47,250</td>
+</tr>
+<tr>
+<td style="text-align: left;">Direct Buyback &amp; Plug-and-Play Power Kits</td>
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">₹950 <em>(Net after buyback, controller, cables)</em></td>
+<td style="text-align: center;">₹1,42,500</td>
+</tr>
+<tr>
+<td style="text-align: left;">Repair Arbitrage (<code>SS-R</code> $\rightarrow$ <code>SS-A</code>)</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">₹1,400 <em>(Buy ₹450 + Fix ₹250; Sell ₹2,100)</em></td>
+<td style="text-align: center;">₹1,40,000</td>
+</tr>
+<tr>
+<td style="text-align: left;">Condemned Scrap (<code>SS-F</code> Phase-1 <code>Extract-Pod</code>)</td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">₹650 <em>(Al/Cu + Partner Tolling/EPR − Cost)</em></td>
+<td style="text-align: center;">₹2,60,000</td>
+</tr>
+<tr>
+<td style="text-align: left;">Net Non-Waived Testing &amp; Audit Fees</td>
+<td style="text-align: center;">800</td>
+<td style="text-align: center;">₹100 <em>(Blended average)</em></td>
+<td style="text-align: center;">₹80,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TOTAL MONTHLY GROSS CONTRIBUTION</strong></td>
+<td style="text-align: center;"><strong>800</strong></td>
+<td style="text-align: center;"><strong>₹837.2 blended avg / panel</strong></td>
+<td style="text-align: center;"><strong>₹6,69,750</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Less: Fixed Monthly Running Cost (OpEx)</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>-₹3,00,000</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NET MONTHLY OPERATING PROFIT (EBITDA)</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>55.2% Contribution-to-EBITDA Margin</strong></td>
+<td style="text-align: center;"><strong>₹3,69,750 / mo</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Operational Break-Even</strong>: (\frac{₹3,00,000}{₹837.2} \approx ) <strong>360 panels/month (~14 panels/working day)</strong> $\rightarrow$ Reached in <strong>Month 4</strong>.</li>
+<li><strong>Full ₹23 Lakh Capital Payback</strong>: <strong>11–13 Months</strong> | <strong>Steady-State Annual Profit</strong>: <strong>₹44.4 Lakh/yr</strong> | <strong>Cash-on-Cash ROI</strong>: <strong>~193%</strong>.</li>
+</ul>
+<div class="mermaid">
+xychart-beta
+    title &quot;Unit-1 Cumulative Cash Flow &amp; Capital Payback Curve (₹ Lakhs, Months 0–15)&quot;
+    x-axis [&quot;M0&quot;, &quot;M1&quot;, &quot;M2&quot;, &quot;M3&quot;, &quot;M4&quot;, &quot;M5&quot;, &quot;M6&quot;, &quot;M8&quot;, &quot;M10&quot;, &quot;M12&quot;, &quot;M14&quot;, &quot;M15&quot;]
+    y-axis &quot;Cumulative Cash (₹ Lakhs)&quot; -25 --&gt; 25
+    line [-23.0, -24.7, -25.6, -25.4, -24.2, -21.8, -18.1, -10.7, -3.3, 4.1, 11.5, 15.2]
+</div>
+<h2 id="54-generational-wealth-creation-scrapyard-3-vs-gia-platform-15-multiple">5.4 Generational Wealth Creation (Scrapyard 3× vs. GIA Platform 15× Multiple)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Milestone</th>
+<th style="text-align: left;">Physical &amp; Digital Footprint</th>
+<th style="text-align: center;">Annual Revenue</th>
+<th style="text-align: center;">Net EBITDA</th>
+<th style="text-align: center;">Indicative Valuation</th>
+<th style="text-align: center;">Founder Equity Wealth (60%–70%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Year 1</strong></td>
+<td style="text-align: left;">Unit-1 (<code>Scout</code> + <code>Extract-Pod</code>) + 2 Techs</td>
+<td style="text-align: center;">₹65 Lakh</td>
+<td style="text-align: center;">₹12 Lakh</td>
+<td style="text-align: center;">₹3–₹5 Crore <em>(Seed)</em></td>
+<td style="text-align: center;">₹2–₹3.5 Crore</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Year 3</strong></td>
+<td style="text-align: left;">5 Solar-Belt Hubs + 150 Franchise Techs + 2 <code>Extract-Box 20</code> Units</td>
+<td style="text-align: center;">₹24 Crore</td>
+<td style="text-align: center;">₹7.5 Crore</td>
+<td style="text-align: center;"><strong>₹90–₹120 Crore</strong> <em>(Series A)</em></td>
+<td style="text-align: center;"><strong>₹55–₹75 Crore</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Year 5</strong></td>
+<td style="text-align: left;">15 Hubs + 600 Techs + 2 Regional <code>Extract-Refineries</code> + National Licensing</td>
+<td style="text-align: center;">₹110 Crore</td>
+<td style="text-align: center;">₹40 Crore</td>
+<td style="text-align: center;"><strong>₹500–₹700 Crore</strong> <em>(Pre-IPO)</em></td>
+<td style="text-align: center;"><strong>₹250–₹350+ Crore</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="part-vi-risk-defense-governance-the-20262040-future-horizon">PART VI: RISK DEFENSE, GOVERNANCE &amp; THE 2026–2040 FUTURE HORIZON</h1>
+<h2 id="61-the-5-rule-zero-brand-damage-governance-firewall">6.1 The 5-Rule "Zero-Brand-Damage" Governance Firewall</h2>
+<ol>
+<li><strong>Zero Coercion</strong>: Owners receive HSM-signed thermal/insulation failure proof on WhatsApp and remain 100% free to decline handover.</li>
+<li><strong>Irreversible On-Site Neutralization</strong>: Condemned <code>SS-F</code> panels have MC4 leads cut flush on-site and cloud QRs permanently locked as <strong><code>DANGER — CONDEMNED SCRAP</code></strong> (zero grey-market leakage).</li>
+<li><strong>Public Mass-Balance Audit</strong>: HSM-signed scales reconcile every input kilogram to outputs (0.0 kg landfilled).</li>
+<li><strong>Zero Informal Acid-Burners</strong>: 100% CPCB-registered ZLD downstream partners; Portable NIR isolates fluorinated PVDF &amp; thin-film CdTe.</li>
+<li><strong>Structural Division Firewall</strong>: <code>SunSecond STDD Labs</code> (Judge) audited independently from <code>SunSecond Bazaar</code> &amp; <code>Extract</code> (Traders).</li>
+</ol>
+<h2 id="62-six-brutal-real-world-risks-ground-level-defenses">6.2 Six Brutal Real-World Risks &amp; Ground-Level Defenses</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Real-World Risk</th>
+<th style="text-align: left;">Operational Threat</th>
+<th style="text-align: left;">SunSecond's Concrete Defense</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Unorganized <em>Kabadiwalas</em></strong></td>
+<td style="text-align: left;">Instant unregulated cash with zero GST/compliance cost</td>
+<td style="text-align: left;">Outpay them on working panels (₹1,100 vs ₹400 scrap); out-comply them on factories via legal CPCB manifests &amp; fire audits.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Irregular Utility Supply</strong></td>
+<td style="text-align: left;">Big repowering tenders arrive in lumpy waves</td>
+<td style="text-align: left;">Lock in 25+ local commercial EPCs &amp; insurance storm surveyors for steady weekly base load (400–500 panels/mo).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Working Capital Crunch</strong></td>
+<td style="text-align: left;">Paying cash upfront while B2B buyers pay on 60-day credit</td>
+<td style="text-align: left;">Keep 50%+ volume on zero-inventory Managed Escrow + 48-hr Al/Cu liquidation + Day-1 NBFC EMI settlement.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. SPCB / CPCB Permit Delays</strong></td>
+<td style="text-align: left;">Standalone recycler permits take 6–12 months</td>
+<td style="text-align: left;">Operate Day 1 legally as an <strong>Authorized Collection &amp; Diagnostic Partner</strong> under an existing CPCB recycler's MoU.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5. Improper Buyer Wiring</strong></td>
+<td style="text-align: left;">Rural buyer shorts degraded panel in 1000V inverter</td>
+<td style="text-align: left;">Keyed 60V XT60 plugs on <code>SS-B</code> (<em>Poka-Yoke</em>), Plug-and-Play Power Kits, and QR install photo required for warranty.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>6. Transit Glass Breakage</strong></td>
+<td style="text-align: left;">Rough roads shatter stacked panels, wiping out resale margin</td>
+<td style="text-align: left;">Custom vertical padded A-frame glass-carrier steel racks inside the pickup van (&lt;0.5% breakage rate).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="63-the-4-wave-expansion-20262040-cleantech-gia-horizon">6.3 The 4-Wave Expansion &amp; 2026–2040 CleanTech GIA Horizon</h2>
+<div class="mermaid">
+flowchart LR
+    W1[&quot;WAVE 1 (2026–2027)\nNail Unit-1 &amp; IIT/NISE Study\n• Scout + Extract-Pod\n• 12-Mo Capital Payback\n• &gt;97% Decision Concordance&quot;] --&gt; W2[&quot;WAVE 2 (2027–2029)\nDistrict Techs + Extract-Box 20\n• 50–150 Franchised Scouts\n• Off-grid Containers at Solar Parks\n• 5 Top Solar States (&gt;70% India)&quot;]
+    W2 --&gt; W3[&quot;WAVE 3 (2029–2035)\nCPCB FY34–35 EPR Tsunami\n• Regional ZLD MSA Refineries\n• Solar-Si to EV Anode Supply\n• Insurers &amp; Banks Mandate STDD&quot;]
+    W3 --&gt; W4[&quot;WAVE 4 (2035–2040+)\nGlobal Multi-Asset CleanTech GIA\n• Export SaaS to MENA, ASEAN, Africa\n• Expand STDD Diagnostics to\n  Second-Life EV &amp; BESS Batteries!&quot;]
+</div>
+<p><strong>The Ultimate Strategic Endgame</strong>: Once SunSecond controls the diagnostic vans, trained electronics technicians, CPCB/insurer/bank trust rails, and STDD cryptographic standard, expanding from <strong>Solar PV</strong> into <strong>Second-Life EV &amp; Solar Storage Batteries (BESS) via EIS Certification &amp; Extraction</strong> adds a second $50B+ circular market at near-zero customer acquisition cost.</p>
+<hr />
+<h1 id="part-vii-academic-execution-18000-lab-mvp-0-field-interview-kit">PART VII: ACADEMIC EXECUTION — ₹18,000 LAB <code>MVP-0</code> &amp; FIELD INTERVIEW KIT</h1>
+<h2 id="71-90-day-electronics-engineering-capstone-prototype-mvp-0-rec-sonbhadra-ece-lab">7.1 90-Day Electronics Engineering Capstone Prototype (<code>MVP-0</code> — REC Sonbhadra ECE Lab)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Subsystem</th>
+<th style="text-align: left;">College Lab Hardware Stack (Rajkiya Engineering College, Sonbhadra)</th>
+<th style="text-align: center;">Est. Cost (₹)</th>
+<th style="text-align: left;">Viva / Jury Proof Point (<code>BEC754</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Dark I-V &amp; Diode Sweeper</strong></td>
+<td style="text-align: left;">STM32G4 / ESP32-S3 + Programmable Constant-Current MOSFET Driver (IRFP260N + Op-Amp loop) + INA226 16-bit ADC + 48V Lab Supply</td>
+<td style="text-align: center;">₹4,500</td>
+<td style="text-align: left;">Sweeps retired panel in 2 seconds; plots (\ln(I)\text{ vs }V) extracting (R_s, R_{sh}) and flags dead bypass diode (<code>SS-R</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. 365 nm UVF Crack Imager</strong></td>
+<td style="text-align: left;">High-power 365 nm UV-A LED bar + PVC/blackout pop-up hood + smartphone camera w/ yellow long-pass filter</td>
+<td style="text-align: center;">₹3,500</td>
+<td style="text-align: left;">Reveals hidden silicon cell cracks &amp; EVA aging in 5 seconds with zero electrical wiring.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Active Pulse Thermography</strong></td>
+<td style="text-align: left;">USB-C LWIR Thermal Module (Topdon TC001 / InfiRay P2 Pro — or borrowed from ECE lab)</td>
+<td style="text-align: center;">₹10,000 <em>(or ₹0 lab)</em></td>
+<td style="text-align: left;">Injects 3-sec DC pulse; displays glowing localized hotspots live on smartphone screen.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Safety Gate (<code>Riso</code>)</strong></td>
+<td style="text-align: left;">Standard 1000V Digital Megger <em>(available in REC Sonbhadra Electrical Machines Lab)</em></td>
+<td style="text-align: center;">₹0 <em>(Lab)</em></td>
+<td style="text-align: left;">Demonstrates non-negotiable IEC 61730 electrical safety pass/fail gate.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5. Live "4S" QR Web App</strong></td>
+<td style="text-align: left;">Python/Flask or Firebase web app generating live mobile QR report with thermal + UVF photos + 4S Grade</td>
+<td style="text-align: center;">₹0 <em>(Free Tier)</em></td>
+<td style="text-align: left;">Faculty evaluators scan QR on their own phones during <code>BEC754</code> assessment to experience the <strong>SunSecond GIA Glass-Box</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="72-5-stakeholder-field-validation-toolkit-sonbhadra-vindhya-corridor-national-discovery">7.2 5-Stakeholder Field Validation Toolkit (Sonbhadra / Vindhya Corridor &amp; National Discovery)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Stakeholder Segment</th>
+<th style="text-align: center;">Target #</th>
+<th style="text-align: left;">Non-Leading Discovery Questions <em>(Past Behavior, Not Opinions)</em></th>
+<th style="text-align: left;">Hypothesis Validated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><strong>Solar EPCs &amp; O&amp;M Managers</strong> <em>(Supply)</em></td>
+<td style="text-align: center;">5–6</td>
+<td style="text-align: left;"><em>"Where are the cracked/replaced panels from your last 2 years of jobs sitting right now? How do you document CPCB disposal for factories today?"</em></td>
+<td style="text-align: left;">Free/paid <code>SS-F</code> intake + steady weekly EPC supply</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;"><strong>SMEs / Cold Storage / Factories</strong> <em>(Tier 1–2)</em></td>
+<td style="text-align: center;">5–6</td>
+<td style="text-align: left;"><em>"What is your monthly commercial power/diesel bill? What exact proof/warranty would make you buy half-price certified used panels?"</em></td>
+<td style="text-align: left;">₹10–₹13/W willingness + 3-yr warranty trust trigger</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;"><strong>Farmers, Kirana &amp; E-Rickshaws</strong> <em>(Tier 2–3)</em></td>
+<td style="text-align: center;">8–10</td>
+<td style="text-align: left;"><em>"How much do you spend monthly on diesel pumps / inverter / e-rickshaw charging? Would a ₹4,499 plug-and-play solar box with 1-yr local swap work?"</em></td>
+<td style="text-align: left;">Demand for &lt;60V <code>SS-B</code> Power Kits &amp; NBFC EMI</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;"><strong>Local Solar Electricians</strong> <em>(Franchise)</em></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;"><em>"How do you currently pinpoint which rooftop panel has a dead diode or hotspot? Would you lease a portable kit earning ₹150–₹250/test + commissions?"</em></td>
+<td style="text-align: left;">Asset-light <code>Scout</code> technician SaaS franchise</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;"><strong>Scrap Dealers &amp; CPCB Recyclers</strong> <em>(Downstream)</em></td>
+<td style="text-align: center;">3–4</td>
+<td style="text-align: left;"><em>"What do you pay today for broken 20 kg panels, and what is your #1 cost? How much extra per kg for NIR-sorted, de-framed laminates?"</em></td>
+<td style="text-align: left;">6063 Green Al pricing &amp; Phase-1 CPCB tolling terms</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="complete-supporting-research-library-deep-dive-appendices">Complete Supporting Research Library (Deep-Dive Appendices)</h3>
+<ul>
+<li><a href="docs/appendix_a_market_analysis.html">Appendix A — Solar Panel Afterlife, Reuse &amp; Recycling Market Analysis</a></li>
+<li><a href="docs/appendix_b_stdd_blueprint.html">Appendix B — SunSecond STDD Strategic Positioning Blueprint</a></li>
+<li><a href="docs/appendix_c_gia_triage_science.html">Appendix C — GIA Roadmap &amp; Decision-First Triage Science</a></li>
+<li><a href="docs/appendix_d_cascade_reuse.html">Appendix D — Cascade Reuse Architecture &amp; Detailed Interview Script</a></li>
+<li><a href="docs/appendix_e_testing_suites.html">Appendix E — 11-Method Testing Suites &amp; Hardware Master Architecture</a></li>
+<li><a href="docs/appendix_f_monetization_engine.html">Appendix F — 10-Stream Monetization &amp; Managed Marketplace Engine</a></li>
+<li><a href="docs/appendix_g_scrap_monetization.html">Appendix G — SunSecond Extract: Non-Reusable Scrap Monetization</a></li>
+<li><a href="docs/appendix_h_scrapping_suites.html">Appendix H — 10-Method Toxin-Free Scrapping Suites &amp; Hardware Architecture</a></li>
+<li><a href="docs/appendix_i_unit1_financials.html">Appendix I — Unit-1 Ground-Reality Financials &amp; Execution Plan</a></li>
+</ul>
+    </article>
+    <div class="footer-bar">
+      <strong>Project SunSecond</strong> &nbsp;|&nbsp; BEC754: Start-up and Entrepreneurial Activity Assessment &nbsp;|&nbsp;
+      Department of Electronics Engineering, Rajkiya Engineering College, Sonbhadra &nbsp;|&nbsp;
+      Team: Neeraj (2308410300042) &amp; Pankaj (2308410300044)
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix D: Cascade Reuse &amp; Interview Kit — SunSecond (STDD)</title>
+  <style>
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --slate: #1e293b;
+  --muted: #475569;
+  --teal: #0d9488;
+  --teal-dark: #0f766e;
+  --teal-soft: #ccfbf1;
+  --amber: #f59e0b;
+  --border: #cbd5e1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--slate);
+  line-height: 1.65;
+}
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: #0f172a; color: #f8fafc;
+  padding: 12px 24px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  border-bottom: 3px solid var(--teal);
+  gap: 10px;
+}
+.topbar .brand { font-weight: 800; font-size: 16px; letter-spacing: 0.4px; }
+.topbar .brand span { color: #2dd4bf; }
+.topbar nav a {
+  color: #e2e8f0; text-decoration: none; font-size: 13px; font-weight: 600;
+  margin-left: 16px; padding: 6px 12px; border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+}
+.topbar nav a:hover { background: var(--teal); color: #fff; }
+.container { max-width: 1080px; margin: 28px auto 60px; padding: 0 20px; }
+.doc-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 36px 42px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+h1 { color: #0f172a; border-bottom: 3px solid var(--teal); padding-bottom: 10px; margin-top: 0; font-size: 28px; }
+h2 { color: var(--teal-dark); margin-top: 32px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; font-size: 21px; }
+h3 { color: #1e293b; margin-top: 22px; font-size: 17px; }
+a { color: var(--teal-dark); font-weight: 600; }
+a:hover { color: var(--teal); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; display: block; overflow-x: auto; }
+th { background: var(--teal); color: #fff; text-align: left; padding: 10px 12px; font-weight: 700; }
+td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+tr:nth-child(even) td { background: #f8fafc; }
+blockquote {
+  margin: 18px 0; padding: 14px 18px;
+  background: #f0fdfa; border-left: 4px solid var(--teal);
+  border-radius: 0 8px 8px 0; color: #134e4a;
+}
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.92em; color: #0f172a; }
+pre { background: #0f172a; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; color: inherit; padding: 0; }
+.mermaid {
+  background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px;
+  padding: 16px; margin: 18px 0; text-align: center; overflow-x: auto;
+}
+.hero {
+  background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+  color: #fff; border-radius: 16px; padding: 36px 40px; margin-bottom: 28px;
+}
+.hero h1 { color: #fff; border: none; margin: 0 0 8px; font-size: 32px; }
+.hero .tag {
+  display: inline-block; background: rgba(45,212,191,0.2); color: #5eead4;
+  border: 1px solid #2dd4bf; padding: 4px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 700; margin-bottom: 14px;
+}
+.hero p { color: #cbd5e1; margin: 6px 0; font-size: 15px; }
+.cta-row { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-block; padding: 12px 20px; border-radius: 8px;
+  text-decoration: none; font-weight: 700; font-size: 14px;
+}
+.btn-primary { background: var(--teal); color: #fff !important; }
+.btn-primary:hover { background: #14b8a6; }
+.btn-amber { background: var(--amber); color: #0f172a !important; }
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px; margin-top: 18px;
+}
+.app-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px 22px; display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.app-card:hover { transform: translateY(-2px); border-color: var(--teal); }
+.app-pill {
+  display: inline-block; background: var(--teal-soft); color: var(--teal-dark);
+  font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 6px; margin-bottom: 8px;
+}
+.app-card h3 { margin: 4px 0 8px; font-size: 16px; color: #0f172a; }
+.app-card p { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+.footer-bar {
+  text-align: center; color: var(--muted); font-size: 12px; margin-top: 36px; padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+@media print { .topbar { display: none; } .doc-card { border: none; box-shadow: none; padding: 0; } }
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Sun<span>Second</span> (STDD) — Deep-Dive Data Room</div>
+    <nav>
+      <a href="../index.html">Data Room Home</a>
+      <a href="../SUNSECOND_PROJECT_BIBLE.html">Master Project Bible</a>
+      <a href="../SunSecond_STDD_Executive_Pitch_Deck.pptx">Download Pitch Deck (.pptx)</a>
+    </nav>
+  </header>
+  <main class="container">
+    <article class="doc-card">
+      <p style="font-size:13px;margin-top:0;"><a href="../SUNSECOND_PROJECT_BIBLE.html">&larr; Back to Master Project Bible</a> &nbsp;|&nbsp; <a href="../index.html">All Deep-Dive Appendices</a></p><h1 id="sunsecond-cascade-reuse-architecture-field-interview-kit">SunSecond Cascade Reuse Architecture &amp; Field Interview Kit</h1>
+<p><strong>Project: SunSecond</strong> | <strong>Subject: BEC754 — Start-up and Entrepreneurial Activity Assessment</strong><br />
+<strong>Department of Electronics Engineering, Rajkiya Engineering College, Sonbhadra</strong><br />
+<strong>Team</strong>: Neeraj (<code>2308410300042</code>) &amp; Pankaj (<code>2308410300044</code>)</p>
+<hr />
+<h2 id="1-the-core-philosophy-how-gia-grades-lower-tiers-without-losing-trust">1. The Core Philosophy: How GIA Grades Lower Tiers Without Losing Trust</h2>
+<p>A common fear is: <em>"If SunSecond sells degraded, lower-output solar panels (e.g., 50%–65% output), won't that ruin our premium GIA-level reputation?"</em></p>
+<p><strong>The exact opposite is true.</strong> Look at the <strong>Gemological Institute of America (GIA)</strong>:
+* GIA does <strong>not</strong> only grade flawless, million-dollar D-color diamonds. GIA grades heavily included, low-color J–Z industrial/budget stones too.
+* <strong>Why does GIA never lose trust?</strong> Because <strong>GIA never lies about what a stone is.</strong> A buyer who pays for a budget grade gets <em>exact, brutal honesty</em>—and knows it will never be falsely passed off as flawless.</p>
+<p>For <strong>SunSecond (STDD)</strong>, the golden rule is:</p>
+<blockquote>
+<p><strong>Degraded power is acceptable—if honestly re-rated, safely matched, and routed to the right voltage application. Compromised electrical safety is NEVER acceptable.</strong></p>
+</blockquote>
+<hr />
+<h2 id="2-the-sunsecond-cascade-reuse-ladder-extracting-every-meaningful-watt">2. The SunSecond Cascade Reuse Ladder (Extracting Every Meaningful Watt)</h2>
+<p>In a utility solar farm, land, mounting steel, and inverters are expensive—so dropping from 330 W to 240 W (or 160 W) makes a panel "economically dead" to the big farm. However, for a rural farm, a shop roof, a poultry shed, or a streetlight where space is abundant and grid electricity is expensive or unreliable, <strong>that same panel is still a goldmine for another 8–12 years.</strong></p>
+<div class="mermaid">
+flowchart TD
+    In[&quot;Retired Utility / Commercial Panel\n(Original Nameplate: e.g., 330W)&quot;] --&gt; Safety{&quot;HARD RED LINE SAFETY GATE\n• Insulation Riso Pass?\n• Zero Severe Thermal Hotspots?\n• Intact Glass &amp; Safe Backsheet?&quot;}
+    
+    Safety --&gt;|&quot;FAIL ANY SAFETY CHECK\n(Even if output is 85%!)&quot;| Scrap[&quot;TIER 5: CONDEMNED (SS-F)\nZERO Electrical Reuse\n-&gt; Straight to Stripping &amp; Extraction&quot;]
+    
+    Safety --&gt;|&quot;PASS SAFETY 100%&quot;| T1{&quot;Power &amp; Cell Health Band&quot;}
+    
+    T1 --&gt;|&quot;80% - 90% Output\n(265W - 300W)&quot;| L1[&quot;TIER 1: PRIME REPOWER (SS-A+)\nCommercial Sheds, SMEs, Cold Storage,\nPetrol Pumps, EV Charging Canopies\n(Up to 1000V DC Strings)&quot;]
+    
+    T1 --&gt;|&quot;65% - 80% Output\n(215W - 265W)&quot;| L2[&quot;TIER 2: WORKHORSE UTILITY (SS-A)\nAgri Solar Pumps, Poultry/Dairy Farms,\nTelecom Towers, Rural Microgrids\n(Impp Current-Matched Pallets)&quot;]
+    
+    T1 --&gt;|&quot;Dead Diode / J-Box\n(Cells &gt; 70% Healthy)&quot;| LR[&quot;REPAIR LOOP (SS-R)\n₹250 Smart J-Box / Diode Swap\n-&gt; Promoted back to Tier 1 or 2&quot;]
+    
+    T1 --&gt;|&quot;45% - 65% Output OR\n1 Dead Substring\n(140W - 210W)&quot;| L3[&quot;TIER 3: MICRO-DC / SELV (SS-B)\nSTRICTLY &lt; 60V DC Standalone!\nE-Rickshaw Roofs, Streetlights, Kirana\nInverter Charging, Farm Fences, IoT&quot;]
+    
+    T1 --&gt;|&quot;&lt; 45% Output OR\nSevere Cracks/Aging&quot;| Scrap
+</div>
+<hr />
+<h2 id="3-deep-technical-commercial-breakdown-of-every-reuse-tier">3. Deep Technical &amp; Commercial Breakdown of Every Reuse Tier</h2>
+<h3 id="tier-1-prime-repowered-ss-a-8090-original-power">Tier 1: Prime Repowered (<code>SS-A+</code> | 80%–90% Original Power)</h3>
+<ul>
+<li><strong>Source</strong>: Early utility repowering (10–12 year old panels replaced to install 600W bifacials), insurance write-offs (hailstorm at one corner of a farm where 60% of panels were untouched), or factory excess stock.</li>
+<li><strong>Target Buyers (India &amp; Global)</strong>: Small &amp; Medium Enterprises (SMEs), textile/packaging workshops, cold storage units, dairy chilling centers, commercial parking canopies.</li>
+<li><strong>Why They Buy</strong>: Commercial grid tariffs in India are <strong>₹9–₹14/kWh</strong>. Buying <code>SS-A+</code> panels at <strong>50% off new panel cost</strong> delivers a <strong>&lt; 1.8-year payback period</strong> for small factories that have large tin-shed roofs!</li>
+<li><strong>Engineering Safeguard</strong>: Passes full <code>Riso,wet</code> wet-leakage test + UVF/EL inspection. Safe for standard 600V–1000V grid-tie inverters.</li>
+</ul>
+<h3 id="tier-2-workhorse-utility-ss-a-6580-original-power">Tier 2: Workhorse Utility (<code>SS-A</code> | 65%–80% Original Power)</h3>
+<ul>
+<li><strong>Source</strong>: 12–16 year old commercial/utility modules showing uniform EVA yellowing or moderate series resistance ((R_s)) rise, but zero dangerous hotspots.</li>
+<li><strong>Target Buyers</strong>:</li>
+<li><strong>Agricultural Solar Pumping</strong> (farmers without PM-KUSUM subsidy slots who otherwise burn expensive diesel).</li>
+<li><strong>Rural Microgrids &amp; Mini-Grids</strong> (Uttar Pradesh, Bihar, Jharkhand, Odisha, Sub-Saharan Africa).</li>
+<li><strong>Poultry Farms, Brick Kilns, Flour Mills (<em>Atta Chakki</em>)</strong>.</li>
+<li><strong>Critical Electronics Engineering Trick — Current Binning ((I_{mpp}) Matching)</strong>:</li>
+<li><em>Problem</em>: Mixing a 7.2 A aged panel and an 8.5 A aged panel in series destroys string output.</li>
+<li><em>SunSecond Solution</em>: Our sorting software automatically groups Tier 2 panels into <strong>narrow 0.25 A current bins</strong> (e.g., <em>Pallet #42: All panels strictly 6.8 A–7.05 A</em>) so buyers get maximum string efficiency with zero mismatch loss!</li>
+</ul>
+<h3 id="tier-3-de-rated-extra-low-voltage-micro-power-ss-b-4565-output-or-1-dead-substring">Tier 3: De-Rated Extra-Low-Voltage Micro-Power (<code>SS-B</code> | 45%–65% Output OR 1 Dead Substring)</h3>
+<ul>
+<li><strong>This directly answers your question: <em>"What if a panel is slightly corrupted / generates much less, can we still extract meaningful electricity before scrapping?"</em></strong></li>
+<li><strong>The Physics Problem</strong>: Suppose a 72-cell (330W) panel has 3 internal cell substrings (24 cells each). One substring has a cracked cell/broken ribbon, leaving 2 perfectly healthy substrings capable of generating <strong>160W–190W at 24V DC</strong> for another 8 years! If you put this panel in a 1000V string, it creates dangerous reverse bias and kills the whole string.</li>
+<li><strong>The Electronics Engineering Solution — SELV (&lt; 60V DC) Isolation</strong>:</li>
+<li>Permanently bypass/isolate the dead substring inside the junction box (or install a ₹150 active diode bridge) and <strong>re-rate the panel strictly for standalone Extra-Low Voltage (&lt; 60V DC / SELV)</strong>.</li>
+<li>Below 60V DC, <strong>human electrocution risk is practically zero</strong> and <strong>high-voltage DC arc fires cannot sustain themselves</strong>.</li>
+<li><strong>Massive Indian &amp; Global Micro-Use Cases for Tier 3 (<code>SS-B</code>)</strong>:
+  1. <strong>Kirana Shops &amp; Rural Homes (12V/24V Battery Inverter Charging)</strong>: Millions of Indian homes already own a 12V lead-acid inverter battery. One ₹1,100–₹1,400 certified <code>SS-B</code> 170W panel + a ₹600 PWM controller cuts their electricity bill and provides daytime backup during power cuts!
+  2. <strong>E-Rickshaw Charging Sheds &amp; Roof Toppers</strong>: India has 2+ million e-rickshaws running on 48V batteries. Two <code>SS-B</code> panels (₹2,500 total) trickle-charge an e-rickshaw passively while parked between rides, adding 15–20 km of free daily range.
+  3. <strong>Solar Agricultural Fence Energizers (Jhatka Machines)</strong>: Massive rural Indian demand to protect crops from wild boars/nilgai; needs only 40W–100W at 12V DC.
+  4. <strong>Solar Streetlights, Village Water-Tank Pumps, Aquaculture Pond Aerators, Telecom/CCTV/IoT Nodes</strong>.</li>
+</ul>
+<h3 id="tier-4-non-electrical-architectural-reuse-vs-cell-salvage-reality-check">Tier 4: Non-Electrical Architectural Reuse vs. Cell Salvage (Reality Check)</h3>
+<ul>
+<li><strong>Can we cut out individual good silicon cells from a 30% shattered panel?</strong></li>
+<li><strong>No.</strong> Because EVA encapsulant is thermoset cross-linked, mechanically cutting individual silicon wafers out of a laminated sandwich shatters &gt;70% of cells and costs more in labor than buying brand-new Grade-B solar cells (which cost &lt;₹18/cell).</li>
+<li><strong>Hard Cutoff</strong>: Below <strong>45% output</strong>, or if <strong>any safety/structural red line is breached</strong>, <strong>do not try to force electrical reuse</strong>. Immediately route to <strong>Tier 5 (<code>SS-F</code> — Material Extraction)</strong> where Aluminum, Copper, Silver, Silicon, and Glass yield higher, cleaner, and risk-free liquidity.</li>
+</ul>
+<hr />
+<h2 id="4-engineering-the-gia-trust-firewall-protecting-brand-integrity-across-tiers">4. Engineering the "GIA Trust Firewall" (Protecting Brand Integrity Across Tiers)</h2>
+<p>How do you sell both a <strong>₹2,800 Commercial Panel (<code>SS-A+</code>)</strong> and a <strong>₹1,100 Rural Micro-DC Panel (<code>SS-B</code>)</strong> without a dishonest middleman ripping off a buyer or causing a roof fire that destroys SunSecond's name?</p>
+<div class="mermaid">
+flowchart LR
+    P1[&quot;1. Brutal True-Wattage Re-Rating\nCover factory &#x27;330W&#x27; sticker with\npermanent SunSecond &#x27;175W Certified&#x27; plate&quot;]
+    P2[&quot;2. Hardware Poka-Yoke (Mistake-Proofing)\nTier 1/2: Standard 1000V MC4\nTier 3 (SELV): Keyed XT60 / Anderson Plug\n(Physically CANNOT plug into 1000V string!)&quot;]
+    P3[&quot;3. Color-Coded Visual Standard\nGREEN Seal: SS-A+ / SS-A (High-Voltage OK)\nAMBER Seal: SS-B (&lt;60V DC Standalone Only)\nRED Perforation: SS-F (Scrap Only)&quot;]
+    P4[&quot;4. Public QR Verification\nBuyer scans QR on WhatsApp -&gt; Sees exact\nWattage, Thermal Photo &amp; Max Voltage Limit&quot;]
+    
+    P1 --&gt; P2 --&gt; P3 --&gt; P4
+</div>
+<h3 id="the-four-anti-fraud-hardware-controls">The Four Anti-Fraud Hardware Controls</h3>
+<ol>
+<li><strong>True-Wattage Over-Labeling</strong>: Never sell a degraded 330W panel as a "Used 330W Panel." Permanently bond an anodized/tamper-evident SunSecond nameplate over the factory label declaring its <strong>new true wattage</strong> (e.g., <code>SunSecond Certified: 175W ±5% | Max 60V DC</code>). If someone tries to peel it off, it leaves a <code>VOID</code> tamper pattern.</li>
+<li><strong>Physical Connector Keying (Poka-Yoke)</strong>: On Tier 3 (<code>SS-B</code>) panels, remove the standard 1000V MC4 connectors and crimp on <strong>60V DC Anderson Powerpole / XT60 / Ring-Lug battery connectors</strong>. This makes it <strong>physically impossible</strong> for an unscrupulous installer to plug a degraded Tier 3 panel into a high-voltage commercial rooftop inverter!</li>
+<li><strong>Physical Condemnation for <code>SS-F</code> (Scrap)</strong>: When a panel fails safety (<code>SS-F</code>), the technician <strong>cuts off the MC4 connectors at the junction box on-site</strong> and slaps on a bright red <code>CONDEMNED — ELECTRICAL HAZARD</code> seal so it can never secretly re-enter the grey market.</li>
+<li><strong>Tier-Matched Warranties</strong>:
+   * <code>SS-A+</code>: 3–5 Year Replacement Warranty (Commercial bankable).
+   * <code>SS-A</code>: 2 Year Replacement Warranty (Agri/SME).
+   * <code>SS-B</code>: 6–12 Month Functional Guarantee (Micro-DC).</li>
+</ol>
+<hr />
+<h2 id="5-field-customer-discovery-interview-toolkit-for-your-coursework">5. Field Customer-Discovery Interview Toolkit (For Your Coursework)</h2>
+<p>To validate <strong>which reuse tiers have the highest real-world demand, pricing power, and trust barriers</strong>, conduct <strong>20–30 structured field interviews</strong> across these 5 stakeholder segments in India (standard Lean Startup / academic entrepreneurship methodology).</p>
+<blockquote>
+<p><strong>TIP:</strong> &gt; <strong>The Mom Test Rule for Interviews</strong>: Never pitch SunSecond first and ask <em>"Would you buy this?"</em> (people will politely say yes). Instead, ask about their <strong>past behavior, current electricity/scrap costs, and actual horror stories</strong>.</p>
+</blockquote>
+<h3 id="segment-1-big-solar-farms-commercial-plant-om-managers-epcs-supply-side">Segment 1: Big Solar Farms / Commercial Plant O&amp;M Managers &amp; EPCs <em>(Supply Side)</em></h3>
+<ul>
+<li><strong>Who to interview</strong>: Local solar EPC installers, factory facility managers with 5–10 year old roofs, O&amp;M engineers.</li>
+<li><strong>Core Questions</strong>:
+  1. <em>"In the last 2 years, what happened to panels that cracked, failed, or were replaced during plant upgrades? Where are they sitting right now?"</em>
+  2. <em>"How do you currently decide whether a low-performing panel on a site should be repaired, kept, or thrown away?"</em>
+  3. <em>"Are you aware of CPCB's solar e-waste/EPR rules? How are you currently documenting disposal to avoid compliance issues or fire insurance risk?"</em>
+  4. <em>"If a technician came on-site, tested every retired panel in 60 seconds, paid you instant cash for usable ones, and gave you a legal CPCB disposal certificate while hauling away the dead ones for free—what would stop you from saying yes?"</em></li>
+</ul>
+<h3 id="segment-2-small-firms-smes-cold-storage-poultry-dairy-farms-tier-1-2-buyers">Segment 2: Small Firms / SMEs / Cold Storage / Poultry &amp; Dairy Farms <em>(Tier 1 &amp; 2 Buyers)</em></h3>
+<ul>
+<li><strong>Who to interview</strong>: Owners of small manufacturing sheds, cold storages, petrol pumps, dairy chillers, or poultry farms paying commercial tariffs (₹9–₹13/unit).</li>
+<li><strong>Core Questions</strong>:
+  1. <em>"What is your monthly electricity or diesel generator bill right now, and why haven't you covered 100% of your shed roof with new solar panels yet?"</em>
+  2. <em>"Have you ever considered buying used solar panels? If not, what specifically scares you about them (hidden damage, fire risk, fake wattage, no warranty)?"</em>
+  3. <em>"If you had excess shed roof space, would you prefer paying ₹4 Lakh for brand-new 10 kW solar, or ₹2 Lakh for 10 kW of SunSecond-certified 2nd-life panels (occupying 25% more roof area) backed by a 3-year replacement warranty and an IIT/NABL-validated test report?"</em></li>
+</ul>
+<h3 id="segment-3-farmers-e-rickshaw-owners-kirana-shopkeepers-tier-2-3-micro-dc-buyers">Segment 3: Farmers, E-Rickshaw Owners &amp; Kirana Shopkeepers <em>(Tier 2 &amp; 3 Micro-DC Buyers)</em></h3>
+<ul>
+<li><strong>Who to interview</strong>: Local farmers using diesel pumps/fences, e-rickshaw charging yard operators, rural shopkeepers with inverter batteries.</li>
+<li><strong>Core Questions</strong>:
+  1. <em>"How much do you spend every month on diesel for irrigation / grid power for charging your e-rickshaw or shop inverter?"</em>
+  2. <em>"If you could buy a guaranteed, safe 160W–180W solar panel for ₹1,200–₹1,500 (instead of ₹4,500 new) that plugs straight into your 12V/24V/48V battery—what proof would you need to trust that it won't die next month?"</em>
+  3. <em>"Would scanning a QR code on WhatsApp showing a green 'PASS' badge + live test wattage + 1-year free swap from a local shop convince you to buy it?"</em></li>
+</ul>
+<h3 id="segment-4-local-solar-technicians-electricians-the-distribution-testing-force">Segment 4: Local Solar Technicians &amp; Electricians <em>(The Distribution &amp; Testing Force)</em></h3>
+<ul>
+<li><strong>Who to interview</strong>: Independent solar installers and local electrical contractors.</li>
+<li><strong>Core Questions</strong>:
+  1. <em>"When a customer complains their solar system is generating less power, what tools do you currently use to find which exact panel is bad?"</em>
+  2. <em>"How often do you find a panel that is totally dead only because of a burnt junction box or bypass diode?"</em>
+  3. <em>"If SunSecond gave you a portable testing kit and paid you ₹150–₹250 per certified inspection plus a commission on every old panel bought back or sold—would you join as a certified partner?"</em></li>
+</ul>
+<h3 id="segment-5-scrap-dealers-kabadiwalas-registered-recyclers-tier-5-extraction-channel">Segment 5: Scrap Dealers (<em>Kabadiwalas</em>) &amp; Registered Recyclers <em>(Tier 5 / Extraction Channel)</em></h3>
+<ul>
+<li><strong>Who to interview</strong>: Local aluminum/e-waste scrap aggregators and a CPCB-registered e-waste recycler.</li>
+<li><strong>Core Questions</strong>:
+  1. <em>"How much do you currently pay for a broken 20 kg solar panel, and what parts do you actually recover vs. dump?"</em>
+  2. <em>"What is your biggest cost or headache when handling solar panels (transportation bulk, frame removal, glass shattering, lack of CPCB paperwork)?"</em>
+  3. <em>"If we delivered pre-stripped, clean glass-silicon laminates sorted by backsheet type (fluorinated vs. non-fluorinated) in bulk truckloads with full weight manifests, how much more per kg would you pay?"</em></li>
+</ul>
+<hr />
+<h2 id="6-interview-scoring-matrix-how-to-present-results-in-your-coursework">6. Interview Scoring Matrix (How to Present Results in Your Coursework)</h2>
+<p>Track every interview in a structured validation table to prove <strong>empirical product-market fit</strong> to your professors:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Reuse Tier</th>
+<th style="text-align: left;">Target Segment</th>
+<th style="text-align: left;">Validated Price Willingness (₹/W)</th>
+<th style="text-align: left;">#1 Trust Trigger Found in Interviews</th>
+<th style="text-align: left;">Primary Adoption Friction</th>
+<th style="text-align: left;">Go / No-Go Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Tier 1 (<code>SS-A+</code>)</strong></td>
+<td style="text-align: left;">SMEs / Factories</td>
+<td style="text-align: left;">Target: ₹10–₹13 / W</td>
+<td style="text-align: left;">3-Year Swap Warranty + Fire Safety Cert</td>
+<td style="text-align: left;">Extra roof area needed (+15–20%)</td>
+<td style="text-align: left;"><em>Validate via 5+ SME interviews</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tier 2 (<code>SS-A</code>)</strong></td>
+<td style="text-align: left;">Agri Pumps / Microgrids</td>
+<td style="text-align: left;">Target: ₹8–₹10 / W</td>
+<td style="text-align: left;">Current-matched pallets + Bank/NBFC acceptance</td>
+<td style="text-align: left;">Rural transport logistics</td>
+<td style="text-align: left;"><em>Validate via 5+ Farmer/EPC interviews</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tier 3 (<code>SS-B</code>)</strong></td>
+<td style="text-align: left;">Kirana / E-Rickshaw / Fences</td>
+<td style="text-align: left;">Target: ₹6–₹8 / W</td>
+<td style="text-align: left;">Plug-and-play &lt;60V safety + Local shop swap</td>
+<td style="text-align: left;">Awareness of battery compatibility</td>
+<td style="text-align: left;"><em>Validate via 10+ Rural/EV interviews</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tier 5 (<code>SS-F</code>)</strong></td>
+<td style="text-align: left;">Commercial Owners / Recyclers</td>
+<td style="text-align: left;">Disposal Fee / ₹0 intake + Al/Cu/Ag value</td>
+<td style="text-align: left;">Legal CPCB EPR certificate + Free removal</td>
+<td style="text-align: left;">Minimum batch pickup economics</td>
+<td style="text-align: left;"><em>Validate via 5+ O&amp;M/Recycler interviews</em></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <div class="footer-bar">
+      <strong>Project SunSecond</strong> &nbsp;|&nbsp; BEC754: Start-up and Entrepreneurial Activity Assessment &nbsp;|&nbsp;
+      Department of Electronics Engineering, Rajkiya Engineering College, Sonbhadra &nbsp;|&nbsp;
+      Team: Neeraj (2308410300042) &amp; Pankaj (2308410300044)
+    </div>
+  </main>
+</body>
+</html>

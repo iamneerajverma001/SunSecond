@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SunSecond (STDD) — Interactive Deep-Dive Data Room</title>
+  <style>
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --slate: #1e293b;
+  --muted: #475569;
+  --teal: #0d9488;
+  --teal-dark: #0f766e;
+  --teal-soft: #ccfbf1;
+  --amber: #f59e0b;
+  --border: #cbd5e1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--slate);
+  line-height: 1.65;
+}
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: #0f172a; color: #f8fafc;
+  padding: 12px 24px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  border-bottom: 3px solid var(--teal);
+  gap: 10px;
+}
+.topbar .brand { font-weight: 800; font-size: 16px; letter-spacing: 0.4px; }
+.topbar .brand span { color: #2dd4bf; }
+.topbar nav a {
+  color: #e2e8f0; text-decoration: none; font-size: 13px; font-weight: 600;
+  margin-left: 16px; padding: 6px 12px; border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+}
+.topbar nav a:hover { background: var(--teal); color: #fff; }
+.container { max-width: 1080px; margin: 28px auto 60px; padding: 0 20px; }
+.doc-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 36px 42px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+h1 { color: #0f172a; border-bottom: 3px solid var(--teal); padding-bottom: 10px; margin-top: 0; font-size: 28px; }
+h2 { color: var(--teal-dark); margin-top: 32px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; font-size: 21px; }
+h3 { color: #1e293b; margin-top: 22px; font-size: 17px; }
+a { color: var(--teal-dark); font-weight: 600; }
+a:hover { color: var(--teal); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; display: block; overflow-x: auto; }
+th { background: var(--teal); color: #fff; text-align: left; padding: 10px 12px; font-weight: 700; }
+td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+tr:nth-child(even) td { background: #f8fafc; }
+blockquote {
+  margin: 18px 0; padding: 14px 18px;
+  background: #f0fdfa; border-left: 4px solid var(--teal);
+  border-radius: 0 8px 8px 0; color: #134e4a;
+}
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.92em; color: #0f172a; }
+pre { background: #0f172a; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; color: inherit; padding: 0; }
+.mermaid {
+  background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px;
+  padding: 16px; margin: 18px 0; text-align: center; overflow-x: auto;
+}
+.hero {
+  background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+  color: #fff; border-radius: 16px; padding: 36px 40px; margin-bottom: 28px;
+}
+.hero h1 { color: #fff; border: none; margin: 0 0 8px; font-size: 32px; }
+.hero .tag {
+  display: inline-block; background: rgba(45,212,191,0.2); color: #5eead4;
+  border: 1px solid #2dd4bf; padding: 4px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 700; margin-bottom: 14px;
+}
+.hero p { color: #cbd5e1; margin: 6px 0; font-size: 15px; }
+.cta-row { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-block; padding: 12px 20px; border-radius: 8px;
+  text-decoration: none; font-weight: 700; font-size: 14px;
+}
+.btn-primary { background: var(--teal); color: #fff !important; }
+.btn-primary:hover { background: #14b8a6; }
+.btn-amber { background: var(--amber); color: #0f172a !important; }
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px; margin-top: 18px;
+}
+.app-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px 22px; display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.app-card:hover { transform: translateY(-2px); border-color: var(--teal); }
+.app-pill {
+  display: inline-block; background: var(--teal-soft); color: var(--teal-dark);
+  font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 6px; margin-bottom: 8px;
+}
+.app-card h3 { margin: 4px 0 8px; font-size: 16px; color: #0f172a; }
+.app-card p { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+.footer-bar {
+  text-align: center; color: var(--muted); font-size: 12px; margin-top: 36px; padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+@media print { .topbar { display: none; } .doc-card { border: none; box-shadow: none; padding: 0; } }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Sun<span>Second</span> (STDD) — The "GIA for Solar"</div>
+    <nav>
+      <a href="SUNSECOND_PROJECT_BIBLE.html">Master Project Bible</a>
+      <a href="SunSecond_STDD_Executive_Pitch_Deck.pptx">Pitch Deck (.pptx)</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="tag">BEC754 &bull; START-UP &amp; ENTREPRENEURIAL ACTIVITY ASSESSMENT</div>
+      <h1>SunSecond — Interactive Deep-Dive Data Room</h1>
+      <p><strong>"Every Ray Deserves a Second Life. Every Gram Deserves a Clean Return."</strong></p>
+      <p>Department of Electronics Engineering &nbsp;|&nbsp; Rajkiya Engineering College, Sonbhadra</p>
+      <p>Team: <strong>Neeraj</strong> (Roll No. 2308410300042) &amp; <strong>Pankaj</strong> (Roll No. 2308410300044)</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="SUNSECOND_PROJECT_BIBLE.html">Read Master Project Bible (v3.1) &rarr;</a>
+        <a class="btn btn-amber" href="SunSecond_STDD_Executive_Pitch_Deck.pptx">Download 16-Slide Pitch Deck (.pptx)</a>
+      </div>
+    </section>
+
+    <h2 style="margin-top:10px;">9 Interlinked Deep-Dive Engineering &amp; Financial Appendices</h2>
+    <section class="grid">
+      
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX A</span>
+            <h3>Market &amp; Technical Analysis</h3>
+            <p>Global/India PV waste surge, panel mass-vs-value paradox &amp; CPCB EPR</p>
+          </div>
+          <a href="docs/appendix_a_market_analysis.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX B</span>
+            <h3>STDD Strategic Positioning</h3>
+            <p>Zero-bias HSM grading, on-site service UX &amp; dual-stream cash flow</p>
+          </div>
+          <a href="docs/appendix_b_stdd_blueprint.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX C</span>
+            <h3>GIA Roadmap &amp; Triage Science</h3>
+            <p>5-step trust monopoly playbook, 14% wet-leakage trap &amp; sensor physics</p>
+          </div>
+          <a href="docs/appendix_c_gia_triage_science.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX D</span>
+            <h3>Cascade Reuse &amp; Interview Kit</h3>
+            <p>Multi-tier reuse down to &lt;60V SELV, Poka-Yoke &amp; 5-stakeholder Mom-Test scripts</p>
+          </div>
+          <a href="docs/appendix_d_cascade_reuse.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX E</span>
+            <h3>11-Method Testing Suites</h3>
+            <p>Dark I-V, AC-IS, UVF, NIR, SSTDR &amp; Scout / Express-Van / Vault-Hub specs</p>
+          </div>
+          <a href="docs/appendix_e_testing_suites.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX F</span>
+            <h3>10-Stream Commercial Engine</h3>
+            <p>StockX Escrow Bazaar, Spinny Power Kits, GIA label licensing &amp; Solar Blue Book</p>
+          </div>
+          <a href="docs/appendix_f_monetization_engine.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX G</span>
+            <h3>SS-F Scrap Monetization</h3>
+            <p>Flipping CEEW&#x27;s -₹10.2K/t loss to +₹98K/t via 7 levers &amp; 5-rule governance</p>
+          </div>
+          <a href="docs/appendix_g_scrap_monetization.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX H</span>
+            <h3>Toxin-Free Scrapping Suites</h3>
+            <p>Dual Hot-Knife/Roller delam, closed-loop MSA Electrowinning &amp; 3 Extraction Suites</p>
+          </div>
+          <a href="docs/appendix_h_scrapping_suites.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+        <div class="app-card">
+          <div>
+            <span class="app-pill">APPENDIX I</span>
+            <h3>Unit-1 Financials &amp; Execution</h3>
+            <p>₹23L launch CapEx, ₹3L/mo OpEx, Month-4 break-even, 193% ROI &amp; 6 risk defenses</p>
+          </div>
+          <a href="docs/appendix_i_unit1_financials.html">Open Deep Dive &rarr;</a>
+        </div>
+        
+    </section>
+
+    <div class="footer-bar">
+      All documents, diagrams, testing suite architectures, toxin-free extraction flows &amp; Unit-1 financials are cross-linked for instant faculty &amp; investor inspection.
+    </div>
+  </main>
+</body>
+</html>
