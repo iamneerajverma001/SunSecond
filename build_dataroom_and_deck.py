@@ -68,11 +68,9 @@ SLIDE_DEEP_DIVES = {
     8: ("Deep Dive: Appendix F — 10-Stream Engine ->", "docs/appendix_f_monetization_engine.html"),
     9: ("Deep Dive: Appendix H — Scrapping Suites ->", "docs/appendix_h_scrapping_suites.html"),
     10: ("Deep Dive: Appendix G — Scrap Economics ->", "docs/appendix_g_scrap_monetization.html"),
-    11: ("Deep Dive: Appendix I — Unit-1 Model ->", "docs/appendix_i_unit1_financials.html"),
-    12: ("Deep Dive: Appendix I — Cash & ROI ->", "docs/appendix_i_unit1_financials.html"),
-    13: ("Deep Dive: Master Project Bible ->", "SUNSECOND_PROJECT_BIBLE.html"),
-    14: ("Deep Dive: Appendix I — Risk Matrix ->", "docs/appendix_i_unit1_financials.html"),
-    15: ("Deep Dive: Appendix D — Interview Kit ->", "docs/appendix_d_cascade_reuse.html"),
+    11: ("Deep Dive: Appendix I — Unit-1 Model & ROI ->", "docs/appendix_i_unit1_financials.html"),
+    12: ("Deep Dive: Master Project Bible ->", "SUNSECOND_PROJECT_BIBLE.html"),
+    13: ("Deep Dive: Appendix I — Risk Matrix ->", "docs/appendix_i_unit1_financials.html"),
 }
 
 HTML_STYLE = """
@@ -637,7 +635,7 @@ def enhance_pptx_with_links_and_thankyou(live_url: str):
     )
 
     prs.save(str(PPTX_PATH))
-    print(f"Built 16-slide linked PPTX + QR + HTML Data Room at: {OUT_DIR}")
+    print(f"Built 14-slide unified linked PPTX + QR + HTML Data Room at: {OUT_DIR}")
 
 
 if __name__ == "__main__":
