@@ -21,7 +21,7 @@
 | :--- | :--- | :--- |
 | **Data Room Portal** | Interactive central landing portal | [`index.html`](index.html) |
 | **Master Project Bible** | Unified technical, financial & strategic blueprint (v3.1) | [`SUNSECOND_PROJECT_BIBLE.html`](SUNSECOND_PROJECT_BIBLE.html) / [`.md`](SUNSECOND_PROJECT_BIBLE.md) |
-| **Executive Pitch Deck** | 16-slide high-impact widescreen presentation (.pptx) | [`SunSecond_STDD_Executive_Pitch_Deck.pptx`](SunSecond_STDD_Executive_Pitch_Deck.pptx) |
+| **Executive Pitch Deck** | 12-slide high-impact widescreen presentation (.pptx) | [`SunSecond_STDD_Executive_Pitch_Deck.pptx`](SunSecond_STDD_Executive_Pitch_Deck.pptx) |
 | **Appendix A** | Market & Regulatory Dynamics (CPCB EPR 2024–2035) | [`docs/appendix_a_market_analysis.html`](docs/appendix_a_market_analysis.html) |
 | **Appendix B** | STDD Strategic Blueprint & Zero-Bias Service Architecture | [`docs/appendix_b_stdd_blueprint.html`](docs/appendix_b_stdd_blueprint.html) |
 | **Appendix C** | GIA Roadmap & Triage Science (14% Wet-Leakage Trap) | [`docs/appendix_c_gia_triage_science.html`](docs/appendix_c_gia_triage_science.html) |
@@ -38,8 +38,8 @@
 
 The companion presentation `SunSecond_STDD_Executive_Pitch_Deck.pptx` contains:
 - **Slide 01:** Academic Title & Team Credentials (REC Sonbhadra, BEC754).
-- **Slides 02–15:** The complete strategic narrative, market crisis, testing suites, commercial engine, and financial roadmap. Each slide includes a clickable **"Deep Dive ->"** action button.
-- **Slide 16:** Closing Visionary Card (*"Every Ray Deserves a Second Life. Every Gram Deserves a Clean Return."*), offline data room launcher, and embedded high-DPI QR code for live mobile access by jury members.
+- **Slides 02–11:** The complete strategic narrative, market crisis, testing suites, commercial engine, and financial roadmap. Each slide includes a clickable **"Deep Dive ->"** action button.
+- **Slide 12:** Closing Visionary Card (*"Every Ray Deserves a Second Life. Every Gram Deserves a Clean Return."*), offline data room launcher, and embedded high-DPI QR code for live mobile access by jury members.
 
 ---
 

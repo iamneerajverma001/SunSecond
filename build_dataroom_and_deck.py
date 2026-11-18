@@ -3,10 +3,10 @@ SunSecond (STDD) — Complete Interlinked Data Room & Executive Pitch Deck Build
 Builds:
   1. Portable Markdown + Styled Interactive HTML Data Room (index.html, SUNSECOND_PROJECT_BIBLE.html, docs/*.html)
   2. High-DPI Teal/Slate QR Code pointing to the Data Room URL
-  3. 16-Slide Executive PowerPoint Pitch Deck with:
-     - Clickable deep-dive links on every content slide (Slides 2-15)
+  3. 12-Slide Executive PowerPoint Pitch Deck with:
+     - Clickable deep-dive links on every content slide (Slides 2-11)
      - Subtle institutional footer (BEC754 | Electronics Engineering, REC Sonbhadra)
-     - Slide 16: Vision-linked Thank You note + clickable Data Room link + scannable QR code
+     - Slide 12: Vision-linked Thank You note + clickable Data Room link + scannable QR code
 """
 
 import argparse
@@ -369,7 +369,7 @@ def enhance_pptx_with_links_and_thankyou(live_url: str):
     qr_path = OUT_DIR / "qr_sunsecond_dataroom.png"
     generate_qr(live_url, qr_path)
 
-    # 3. Post-process PPTX: add deep-dive links (Slides 2-15) + custom Slide 16 Thank You & QR
+    # 3. Post-process PPTX: add deep-dive links (Slides 2-11) + custom Slide 12 Thank You & QR
     prs = Presentation(str(PPTX_PATH))
     FONT = "Calibri"
     C_BG = RGBColor(255, 255, 255)
@@ -421,7 +421,7 @@ def enhance_pptx_with_links_and_thankyou(live_url: str):
             run.hyperlink.address = rel_target
 
     # ---------------------------------------------------------
-    # SLIDE 16: CREATIVE VISION-LINKED THANK YOU + URL + QR CODE
+    # SLIDE 12: CREATIVE VISION-LINKED THANK YOU + URL + QR CODE
     # ---------------------------------------------------------
     slide16 = prs.slides.add_slide(prs.slide_layouts[6])
 
@@ -637,11 +637,11 @@ def enhance_pptx_with_links_and_thankyou(live_url: str):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Build SunSecond Interlinked Data Room & 16-Slide PPTX")
+    parser = argparse.ArgumentParser(description="Build SunSecond Interlinked Data Room & 12-Slide PPTX")
     parser.add_argument(
         "--url",
         default="https://sunsecond-rec-sonbhadra.netlify.app",
-        help="Public HTTPS URL encoded into the Slide 16 QR code (default placeholder ready for Netlify Drop / GitHub Pages)",
+        help="Public HTTPS URL encoded into the Slide 12 QR code (default placeholder ready for Netlify Drop / GitHub Pages)",
     )
     args = parser.parse_args()
     build_dataroom()
