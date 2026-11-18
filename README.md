@@ -21,8 +21,7 @@
 | :--- | :--- | :--- |
 | **Data Room Portal** | Interactive central landing portal | [`index.html`](index.html) |
 | **Master Project Bible** | Unified technical, financial & strategic blueprint (v3.1) | [`SUNSECOND_PROJECT_BIBLE.html`](SUNSECOND_PROJECT_BIBLE.html) / [`.md`](SUNSECOND_PROJECT_BIBLE.md) |
-| **Executive Pitch Deck (PDF)** | 13-slide high-impact presentation with active links & QR (.pdf) | [`SunSecond_STDD_Executive_Pitch_Deck.pdf`](SunSecond_STDD_Executive_Pitch_Deck.pdf) |
-| **Executive Pitch Deck (PPTX)** | 13-slide native PowerPoint presentation (.pptx) | [`SunSecond_STDD_Executive_Pitch_Deck.pptx`](SunSecond_STDD_Executive_Pitch_Deck.pptx) |
+| **Executive Pitch Deck** | 16-slide high-impact widescreen presentation (.pptx) | [`SunSecond_STDD_Executive_Pitch_Deck.pptx`](SunSecond_STDD_Executive_Pitch_Deck.pptx) |
 | **Appendix A** | Market & Regulatory Dynamics (CPCB EPR 2024–2035) | [`docs/appendix_a_market_analysis.html`](docs/appendix_a_market_analysis.html) |
 | **Appendix B** | STDD Strategic Blueprint & Zero-Bias Service Architecture | [`docs/appendix_b_stdd_blueprint.html`](docs/appendix_b_stdd_blueprint.html) |
 | **Appendix C** | GIA Roadmap & Triage Science (14% Wet-Leakage Trap) | [`docs/appendix_c_gia_triage_science.html`](docs/appendix_c_gia_triage_science.html) |
