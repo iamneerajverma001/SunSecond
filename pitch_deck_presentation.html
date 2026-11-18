@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SunSecond (STDD) — Executive Pitch Deck</title>
+  <style>
+@page {
+  size: 13.333in 7.5in;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Calibri, -apple-system, sans-serif;
+  background: #0f172a;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.slide {
+  width: 13.333in;
+  height: 7.5in;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  padding: 0.65in 0.8in 0.85in 0.8in;
+}
+.slide-dark {
+  background: #0f172a;
+  color: #f8fafc;
+}
+.cat-tag {
+  color: #0d9488;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.slide-title {
+  color: #1e293b;
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 22px 0;
+  line-height: 1.25;
+}
+.footer-bar {
+  position: absolute;
+  bottom: 0.35in;
+  left: 0.8in;
+  right: 0.8in;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #64748b;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 8px;
+}
+.deep-dive-btn {
+  background: #ccfbf1;
+  color: #0f766e !important;
+  border: 1px solid #0d9488;
+  padding: 5px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 11.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.card {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.card.highlight {
+  border: 2px solid #0d9488;
+  background: #f0fdfa;
+}
+.card-pill {
+  display: inline-block;
+  background: #0d9488;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.card-title {
+  color: #1e293b;
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+}
+.card-subtitle {
+  color: #0d9488;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+ul.bullet-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #334155;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+ul.bullet-list li {
+  margin-bottom: 7px;
+}
+.kpi-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #0d9488;
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+.kpi-val {
+  color: #0d9488;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+}
+.kpi-lbl {
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 6px 0 4px;
+}
+.kpi-desc {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.summary-bar {
+  margin-top: 18px;
+  background: #f0fdfa;
+  border: 1px solid #99f6e4;
+  border-radius: 8px;
+  padding: 12px 18px;
+  color: #115e59;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+table.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 6px;
+}
+table.custom-table th {
+  background: #0d9488;
+  color: #fff;
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+table.custom-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+  color: #1e293b;
+}
+table.custom-table tr:nth-child(even) td {
+  background: #f8fafc;
+}
+.tag-step {
+  display: inline-block;
+  background: #0d9488;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 24px;
+  font-weight: 800;
+  font-size: 12px;
+  margin-right: 6px;
+}
+</style>
+</head>
+<body>
+  
+<div class="slide slide-dark" style="display: flex; flex-direction: column; justify-content: center; padding: 1.0in 1.2in;">
+  <div style="display: inline-block; background: rgba(13, 148, 136, 0.2); border: 1px solid #0d9488; color: #2dd4bf; padding: 6px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; width: fit-content; margin-bottom: 24px;">
+    BEC754 PITCH DECK  |  START-UP & ENTREPRENEURIAL ACTIVITY ASSESSMENT
+  </div>
+  <h1 style="color: #ffffff; font-size: 52px; font-weight: 900; margin: 0 0 14px 0; letter-spacing: -0.5px;">
+    SunSecond — <span style="color: #2dd4bf;">The "GIA for Solar"</span>
+  </h1>
+  <p style="color: #94a3b8; font-size: 22px; max-width: 900px; margin: 0 0 36px 0; line-height: 1.45;">
+    India's First Integrated Solar Triage, Demanufacturing & Decoupled-Traceability Platform (STDD)
+  </p>
+  <div style="background: rgba(30, 41, 59, 0.85); border: 1px solid #334155; border-radius: 12px; padding: 18px 26px; max-width: 820px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <div style="color: #cbd5e1; font-size: 13px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Academic Institution & Department</div>
+      <div style="color: #ffffff; font-size: 16px; font-weight: 700; margin-top: 3px;">Department of Electronics Engineering  |  Rajkiya Engineering College, Sonbhadra</div>
+    </div>
+    <div style="text-align: right; border-left: 1px solid #475569; padding-left: 24px;">
+      <div style="color: #2dd4bf; font-size: 14px; font-weight: 800;">Neeraj (2308410300042)</div>
+      <div style="color: #cbd5e1; font-size: 14px; font-weight: 700;">Pankaj (2308410300044)</div>
+    </div>
+  </div>
+  <div class="footer-bar" style="border-top-color: #334155; color: #64748b;">
+    <span>Subject: BEC754 — Start-up and Entrepreneurial Activity Assessment</span>
+    <span>November 2026</span>
+  </div>
+</div>
+
+    <div class="slide">
+      <div class="cat-tag">01 | MARKET CRISIS & REGULATORY CATALYST</div>
+      <h2 class="slide-title">The Inevitable Solar End-of-Life Tsunami (Global & India)</h2>
+      
+        <div class="grid-4">
+            <div class="kpi-box">
+              <div class="kpi-val">78M+ T</div>
+              <div class="kpi-lbl">Global PV Waste (2050)</div>
+              <div class="kpi-desc">Over $15B in recoverable silver, silicon, aluminum & low-iron glass (IRENA)</div>
+            </div>
+            
+            <div class="kpi-box">
+              <div class="kpi-val">4.5M T</div>
+              <div class="kpi-lbl">India PV Waste (2040)</div>
+              <div class="kpi-desc">340,000 tonnes by 2030 driven by early 10-15 yr utility repowering (CEEW)</div>
+            </div>
+            
+            <div class="kpi-box">
+              <div class="kpi-val">-₹10.2K</div>
+              <div class="kpi-lbl">Loss Per Tonne Today</div>
+              <div class="kpi-desc">Standalone shredding fails economically without decision-first triage</div>
+            </div>
+            
+            <div class="kpi-box">
+              <div class="kpi-val">CEEW-14</div>
+              <div class="kpi-lbl">Mandatory India EPR</div>
+              <div class="kpi-desc">CPCB Rules ban landfilling & mandate verified tracking through FY35</div>
+            </div>
+            </div>
+        <div class="summary-bar"><strong>Key Synthesis:</strong> Legacy 2010-2018 panels dying now hold 15-22g of pure Silver (47% of scrap value), while 45-55% still generate safe electricity—creating a massive dual-value arbitrage.</div>
+        
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 02 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_a_market_analysis.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix A — Market Analysis -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">02 | PROBLEM VS. SOLUTION</div>
+      <h2 class="slide-title">Why Today's Market Fails — And SunSecond's Dual-Mission Pivot</h2>
+      
+        <div style="background: #f1f5f9; border-left: 4px solid #0d9488; padding: 10px 16px; border-radius: 6px; font-size: 15px; font-weight: 700; color: #0f766e; margin-bottom: 18px;">
+          Test First. Reuse Every Safe Watt. Extract Every Gram From What Cannot Be Reused.
+        </div>
+        <div class="grid-2">
+          <div class="card" style="border-color: #fca5a5; background: #fff5f5;">
+            <div class="card-pill" style="background: #ef4444;">BROKEN STATUS QUO</div>
+            <div class="card-title" style="color: #991b1b;">Four Structural Market Failures</div>
+            <ul class="bullet-list" style="color: #7f1d1d;"><li>Negative Margin: Standalone shredding loses ₹10.2K-₹12.4K/tonne (CEEW) due to freight & ₹2/kg dust.</li><li>₹2 Cr Testing Wall: Commercial mobile labs cost ₹1,500-₹2,500/panel—unviable for ₹2,000 used panels.</li><li>Fire-Hazard Grey Market: Untested retired panels enter rural roofs causing >150°C fires & shocks.</li><li>Toxic Dumping: Kabadiwalas strip aluminum & dump lead glass or burn polymers in open fields.</li></ul>
+          </div>
+          <div class="card highlight">
+            <div class="card-pill">SUNSECOND (STDD)</div>
+            <div class="card-title">The "GIA + StockX" Circular Standard</div>
+            <ul class="bullet-list"><li>Zero-Bias 4S Standard: Onboard HSM signs raw waveforms—Pass = instant trust; Fail = instant handover.</li><li>30-Sec Weather-Free Triage: Decision-first testing at ₹42-₹85/panel with >98.5% accuracy.</li><li>Cascade Reuse Liquidity: Monetizes every safe tier down to <60V SELV Power Kits via Escrow.</li><li>Toxin-Free Extraction: Hot-Knife glass + closed-loop MSA silver (+₹62.5K to +₹98K/tonne profit).</li></ul>
+          </div>
+        </div>
+        
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 03 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_b_stdd_blueprint.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix B — STDD Blueprint -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">03 | INTEGRATED SYSTEM ARCHITECTURE</div>
+      <h2 class="slide-title">End-to-End Physical, Cryptographic & Financial Flow</h2>
+      <div class="grid-4">
+            <div class="card " style="display: flex; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="card-pill">Stage 01</span>
+                <span style="font-size: 10px; font-weight: 800; color: #0d9488;">PHONE AI | ₹0 COST</span>
+              </div>
+              <div class="card-title" style="font-size: 16px; margin-bottom: 8px;">Remote Pre-Triage</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Owner uploads 3 photos (Front, Back, Label)</li><li>AI filters shattered glass, burns & CdTe</li><li>Cuts 25% wasted field technician travel</li></ul>
+            </div>
+            
+            <div class="card " style="display: flex; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="card-pill">Stage 02</span>
+                <span style="font-size: 10px; font-weight: 800; color: #0d9488;">HSM + 11 NDE STACK</span>
+              </div>
+              <div class="card-title" style="font-size: 16px; margin-bottom: 8px;">Decision Diagnostics</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>30-sec Riso, Dark I-V, AC-IS, UVF & Thermal</li><li>Catches 14% Dry-Pass / Wet-Fail trap</li><li>Signs live WhatsApp 4S visual report</li></ul>
+            </div>
+            
+            <div class="card highlight" style="display: flex; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="card-pill">Stage 03</span>
+                <span style="font-size: 10px; font-weight: 800; color: #0d9488;">STOCKX ESCROW + KITS</span>
+              </div>
+              <div class="card-title" style="font-size: 16px; margin-bottom: 8px;">Cascade Reuse Bazaar</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Routes SS-A+, SS-A, SS-R & <60V SS-B</li><li>Instant UPI buyback or 15% Escrow sale</li><li>Poka-Yoke: XT60 plugs & true-watt plate</li></ul>
+            </div>
+            
+            <div class="card " style="display: flex; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="card-pill">Stage 04</span>
+                <span style="font-size: 10px; font-weight: 800; color: #0d9488;">HOT-KNIFE + MSA ZLD</span>
+              </div>
+              <div class="card-title" style="font-size: 16px; margin-bottom: 8px;">Toxin-Free Extraction</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Flush-cuts MC4 leads (QR = SCRAP)</li><li>48-hr Green Al/Cu cuts freight 65-88%</li><li>Hot-Knife glass + MSA Ag + EPR credits</li></ul>
+            </div>
+            </div>
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 04 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/SUNSECOND_PROJECT_BIBLE.html" class="deep-dive-btn" target="_blank">Deep Dive: Master Project Bible -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">04 | DIAGNOSTIC ELECTRONICS MOAT</div>
+      <h2 class="slide-title">Decision-First NDE Science: 98.5%+ Accuracy Without a ₹50L Lab</h2>
+      <div class="grid-4">
+            <div class="card ">
+              <div class="card-subtitle">DRY HI-POT + MIST WET-LEAKAGE</div>
+              <div class="card-title">Safety Veto Gate</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Catches 14-15% CSIRO Dry-Pass / Wet-Fail safety trap.</li><li>3-sec 1000V Dry Hi-Pot on-site veto.</li><li>15-sec surfactant mist bed replaces slow water tanks.</li><li>Enforces IEC 61730 (>40 MOhm*m2).</li></ul>
+            </div>
+            
+            <div class="card highlight">
+              <div class="card-subtitle">DARK I-V + AC-IS + DIODE</div>
+              <div class="card-title">Weather-Free Electrical</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Zero sunlight needed: 2-sec diode matrix sweep.</li><li>Isolates Rs (solder fatigue) & Rsh (PID/shunts).</li><li>Spots ₹150 dead bypass diodes (SS-R profit!).</li><li>AC-IS (10Hz-100kHz) catches moisture ingress.</li></ul>
+            </div>
+            
+            <div class="card ">
+              <div class="card-subtitle">365nm UVF + PULSE THERMAL</div>
+              <div class="card-title">Visual Trust Engines</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>₹10K UVF (NREL validated): maps cracks via dark lines with zero wiring.</li><li>Active Thermal: 3-sec pulse exposes 130°C hotspots indoors/at night.</li><li>Live WhatsApp visuals end disputes instantly.</li></ul>
+            </div>
+            
+            <div class="card ">
+              <div class="card-subtitle">PORTABLE NIR + SSTDR</div>
+              <div class="card-title">Chemistry & Radar</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>3-sec NIR flags brittle backsheets & isolates toxic PVDF scrap.</li><li>SSTDR scans live 1000V roof strings before unbolting.</li><li>Daylight Lock-In PL/EL cancels midday sun.</li></ul>
+            </div>
+            </div>
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 05 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_c_gia_triage_science.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix C — Triage Science -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">05 | MODULAR TESTING SUITES</div>
+      <h2 class="slide-title">Three Tiered Testing Suites: Right-Sized Portability</h2>
+      <div class="grid-3">
+            <div class="card highlight">
+              <div class="card-subtitle">6.5 KG BACKPACK | ₹1.2-₹1.5L</div>
+              <div class="card-title">SunSecond Scout</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Homes, farms & shops (1-30 panels on-site).</li><li>PFA-1 Core: STM32H7 DSP, MOSFET Dark I-V/AC-IS, 1000V Megger & ATECC608B HSM.</li><li>Pop-up 365nm UVF hood + USB-C LWIR thermal.</li><li>30 sec/panel (80-120/day) | ~₹75/panel | Franchisable.</li></ul>
+            </div>
+            
+            <div class="card ">
+              <div class="card-subtitle">MOBILE LAB | ₹12-₹16L CAPEX</div>
+              <div class="card-title">SunSecond Express-Van</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Commercial roofs & EPC repowering (50-2,000 panels).</li><li>12x cheaper than imported ₹2 Cr MBJ mobile labs.</li><li>Adds SSTDR radar, 2-panel mist wet-leakage drawer, Daylight Lock-In EL & NIR probe.</li><li>Off-grid solar+LFP | 250-400/day | ~₹55/panel.</li></ul>
+            </div>
+            
+            <div class="card ">
+              <div class="card-subtitle">REGIONAL TUNNEL | ₹28-₹35L</div>
+              <div class="card-title">SunSecond Vault-Hub</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Bankable 5-year warranted SS-A+ commercial pallets.</li><li>Parallel 4-panel IEC wet-leakage bed (15s tact).</li><li>LED flash (+-2%) + High-Res EL + Smart J-Box bench.</li><li>Auto Impp Current-Binner | 600-1,000/day | ~₹42/panel.</li></ul>
+            </div>
+            </div>
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 06 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_e_testing_suites.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix E — Testing Suites -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">06 | CASCADE REUSE & GIA TRUST FIREWALL</div>
+      <h2 class="slide-title">Extracting Every Safe Watt With Hardware Poka-Yoke Safeguards</h2>
+      
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 07 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_d_cascade_reuse.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix D — Cascade Reuse -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">07 | HIGH-VELOCITY COMMERCIAL ENGINE</div>
+      <h2 class="slide-title">10 Stacked Revenue Streams — Zero-Cheat "StockX + Spinny + GIA"</h2>
+      <div class="grid-3">
+            <div class="card ">
+              <div class="card-subtitle">STOCKX MODEL | 0% INV RISK</div>
+              <div class="card-title">Verify-to-Ship Bazaar</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>3-Click Outcome Wizard on SunSecond.in / WhatsApp for non-tech buyers.</li><li>Escrow pays seller ONLY after delivery NFC scan (12-18% commission).</li><li>Live "Solar Blue Book" + Two-Door Choice (Instant UPI vs. 100% Listing) = zero regret.</li></ul>
+            </div>
+            
+            <div class="card highlight">
+              <div class="card-subtitle">SPINNY MODEL | 50%-240% MARGIN</div>
+              <div class="card-title">Repairs & Power Kits</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Cherry-pick ₹450 dead-diode SS-R panels -> ₹250 fix -> sell @ ₹2,300+ (>70% margin).</li><li>Bundle 2x SS-B + controller + keyed XT60 wires into ₹4,499 Plug-and-Play Kits.</li><li>NBFC Zero-Down EMI drives 3x conversion + 3-5% fintech referral fee.</li></ul>
+            </div>
+            
+            <div class="card ">
+              <div class="card-subtitle">INTEL INSIDE | 80%-90% MARGIN</div>
+              <div class="card-title">GIA Licensing & SaaS</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>License tamper STDD seals to EPCs/refurbishers at ₹150-₹250/panel.</li><li>Lease Scout kits to electricians: ₹3,999/mo + ₹50/certificate API fee.</li><li>Extended Warranty Shield float (75%+ margin) + CPCB EPR & Carbon brokerage.</li></ul>
+            </div>
+            </div>
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 08 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_f_monetization_engine.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix F — 10-Stream Engine -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">08 | TOXIN-FREE SCRAPPING SUITES</div>
+      <h2 class="slide-title">Zero-Pollution Extraction Architecture: Cutting Freight by 88%</h2>
+      <div class="grid-3">
+            <div class="card ">
+              <div class="card-subtitle">PICKUP KIT | ₹4.5-₹6L CAPEX</div>
+              <div class="card-title">Suite 1: Extract-Pod</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Day-1 Unit-1 kit: Pneumatic 6063-T5 Al puller + Cu J-box shear + HSM scale.</li><li>Strips pure alloy frames in 35s -> Green Al OEMs (+35% premium) in 48 hrs.</li><li>Cuts transport volume 65%; payback in 3-4 months.</li></ul>
+            </div>
+            
+            <div class="card highlight">
+              <div class="card-subtitle">20-FT CONTAINER | ₹28-₹42L</div>
+              <div class="card-title">Suite 2: Extract-Box 20</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Off-grid PV+LFP container at solar parks (100-120 panels/hr).</li><li>NIR sort + PID Hot-Knife (~285°C, zero burn) peels unbroken solar glass (6-9x value).</li><li>Glass ships local; ONLY 1.2 kg/panel Ag-Si ships to refinery (88% weight cut!).</li></ul>
+            </div>
+            
+            <div class="card ">
+              <div class="card-subtitle">ZLD HUB | ₹1.5-₹2.5 Cr (PH-2/3)</div>
+              <div class="card-title">Suite 3: Extract-Refinery</div>
+              <ul class="bullet-list" style="font-size: 12.5px; padding-left: 14px;"><li>Dual Delam: Hot-Knife (70% intact) + Roller/Water-Jet (30% shattered).</li><li>Biodegradable MSA + H2O2 + Potentiostat Electrowinning -> 99.9% Ag, Zero NOx!</li><li>Upcycles 6N solar silicon into EV Battery Si-C anodes (5-10x value).</li></ul>
+            </div>
+            </div>
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 09 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_h_scrapping_suites.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix H — Scrapping Suites -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">09 | SCRAP ECONOMICS BREAKTHROUGH</div>
+      <h2 class="slide-title">Flipping CEEW's -₹10.2K/Tonne Loss Into +₹98K/Tonne Profit</h2>
+      
+        <div class="grid-2">
+          <div class="card" style="background: #ffffff;">
+            <div class="card-title" style="font-size: 16px; margin-bottom: 14px;">Scrap Value vs. Net Economics (₹/Tonne)</div>
+            <table class="custom-table" style="font-size: 12.5px;">
+              <thead>
+                <tr><th>Channel</th><th>Gross Value (₹/t)</th><th>Net Profit / Loss (₹/t)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Kabadiwala</strong></td><td>₹22,000</td><td style="color: #64748b;">+₹4,000 (Toxic dump)</td></tr>
+                <tr style="background: #fef2f2;"><td><strong>Shredding (CEEW Study)</strong></td><td>₹51,000</td><td style="color: #ef4444; font-weight: 700;">-₹10,230 (Loss!)</td></tr>
+                <tr style="background: #f0fdfa;"><td><strong>SunSecond Ph-1 (Tolling)</strong></td><td>₹1,20,500</td><td style="color: #0d9488; font-weight: 800;">+₹62,500 (Profit)</td></tr>
+                <tr style="background: #ccfbf1;"><td><strong>SunSecond Ph-2 (Direct)</strong></td><td>₹1,66,000</td><td style="color: #0f766e; font-weight: 900;">+₹98,000 (Leader)</td></tr>
+              </tbody>
+            </table>
+            <div style="font-size: 11px; color: #64748b; margin-top: 10px;">
+              *CEEW Study benchmarked across Gujarat, Rajasthan, and MP solar parks.
+            </div>
+          </div>
+          <div class="card highlight">
+            <div class="card-pill">7 SCRAP LEVERS</div>
+            <div class="card-title">From Liability to +₹1,960/Panel</div>
+            <ul class="bullet-list" style="font-size: 13px;"><li>Paid CPCB Compliance Intake (+₹5K-7.5K/t) eliminates feedstock purchase cost.</li><li>Green 6063 Al & Cu strip yields ₹32K-34K/t cash in 48 hours.</li><li>Hot-Knife recovers ₹9.5K-12.5K/t clean glass vs ₹1.5K dust.</li><li>Legacy 15-22g Silver (MSA ZLD) + EV Si-Anodes + EPR reach ₹1.66L/t gross.</li></ul>
+          </div>
+        </div>
+        
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 10 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_g_scrap_monetization.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix G — Scrap Economics -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">10 | EXPANSION & 2026-2040 HORIZON</div>
+      <h2 class="slide-title">Self-Funding Domino Scale & Multi-Asset CleanTech GIA Vision</h2>
+      <div class="grid-4">
+            <div class="card" style="display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                <span class="tag-step">1</span>
+                <span style="font-size: 11px; font-weight: 800; color: #0d9488;">WAVE 1 | 2026-27</span>
+              </div>
+              <div class="card-title" style="font-size: 15px; margin-bottom: 8px;">Nail Unit-1 & IIT/NISE Proof</div>
+              <ul class="bullet-list" style="font-size: 12px; padding-left: 14px;"><li>Deploy Scout + Extract-Pod in top solar belt</li><li>Publish 200-panel IIT/NISE study (>97% match)</li><li>Hit 800/mo & ₹65L Yr-1 rev (₹3-5 Cr Seed)</li></ul>
+            </div>
+            
+            <div class="card" style="display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                <span class="tag-step">2</span>
+                <span style="font-size: 11px; font-weight: 800; color: #0d9488;">WAVE 2 | 2027-29</span>
+              </div>
+              <div class="card-title" style="font-size: 15px; margin-bottom: 8px;">Franchise Techs & Extract-Box</div>
+              <ul class="bullet-list" style="font-size: 12px; padding-left: 14px;"><li>Lease Scout kits to 150 district electricians</li><li>Clone 5 top solar-state hubs (>70% India PV)</li><li>Deploy 2 Extract-Box 20 units (₹24 Cr ARR)</li></ul>
+            </div>
+            
+            <div class="card" style="display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                <span class="tag-step">3</span>
+                <span style="font-size: 11px; font-weight: 800; color: #0d9488;">WAVE 3 | 2029-35</span>
+              </div>
+              <div class="card-title" style="font-size: 15px; margin-bottom: 8px;">EPR Cliff & ZLD Refineries</div>
+              <ul class="bullet-list" style="font-size: 12px; padding-left: 14px;"><li>15 hubs + 600 techs + national label licensing</li><li>Commission MSA Electrowinning + EV-Si hubs</li><li>Insurers/NBFCs mandate STDD (₹500+ Cr val)</li></ul>
+            </div>
+            
+            <div class="card" style="display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                <span class="tag-step">4</span>
+                <span style="font-size: 11px; font-weight: 800; color: #0d9488;">WAVE 4 | 2035-40+</span>
+              </div>
+              <div class="card-title" style="font-size: 15px; margin-bottom: 8px;">Global CleanTech GIA Monopoly</div>
+              <ul class="bullet-list" style="font-size: 12px; padding-left: 14px;"><li>Export Scout + SaaS to MENA, ASEAN & Africa</li><li>Expand STDD EIS to Second-Life EV Batteries</li><li>Certify & extract Solar BESS at near-zero CAC</li></ul>
+            </div>
+            </div>
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 11 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/SUNSECOND_PROJECT_BIBLE.html" class="deep-dive-btn" target="_blank">Deep Dive: Master Project Bible -></a>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <div class="cat-tag">11 | BEC754 — IMMEDIATE 90-DAY EXECUTION PLAN</div>
+      <h2 class="slide-title">From REC Sonbhadra ECE Lab MVP-0 to Dual-Sector Pilot Launch</h2>
+      <div>
+            <div class="card" style="display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 18px; margin-bottom: 10px;">
+              <div style="max-width: 820px;">
+                <div style="color: #1e293b; font-weight: 800; font-size: 15px; margin-bottom: 4px;">Build ₹18,000 MVP-0 Diagnostic Kit (REC Sonbhadra ECE Lab)</div>
+                <div style="color: #475569; font-size: 13px; line-height: 1.45;">STM32 Dark I-V/Diode sweeper + 365nm UVF hood + USB-C Thermal + Lab Megger + 4S QR app.</div>
+              </div>
+              <div style="text-align: right; min-width: 130px; border-left: 2px solid #e2e8f0; padding-left: 14px;">
+                <div style="color: #0d9488; font-weight: 800; font-size: 13px;">Days 1-60</div>
+                <div style="color: #64748b; font-size: 11.5px;">Neeraj & Pankaj</div>
+              </div>
+            </div>
+            
+            <div class="card" style="display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 18px; margin-bottom: 10px;">
+              <div style="max-width: 820px;">
+                <div style="color: #1e293b; font-weight: 800; font-size: 15px; margin-bottom: 4px;">Execute 30 Mom-Test Field Interviews (Sonbhadra / UP Belt)</div>
+                <div style="color: #475569; font-size: 13px; line-height: 1.45;">Validate intake fees & Power Kit demand across 30 EPCs, farmers, electricians & CPCB recyclers.</div>
+              </div>
+              <div style="text-align: right; min-width: 130px; border-left: 2px solid #e2e8f0; padding-left: 14px;">
+                <div style="color: #0d9488; font-weight: 800; font-size: 13px;">Days 15-75</div>
+                <div style="color: #64748b; font-size: 11.5px;">Neeraj & Pankaj</div>
+              </div>
+            </div>
+            
+            <div class="card" style="display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 18px; margin-bottom: 10px;">
+              <div style="max-width: 820px;">
+                <div style="color: #1e293b; font-weight: 800; font-size: 15px; margin-bottom: 4px;">Apply for ₹10L DST NIDHI-PRAYAS Grant & IIT/NISE Study</div>
+                <div style="color: #475569; font-size: 13px; line-height: 1.45;">Fabricate PFA-1 alpha PCB with ATECC608B HSM & run 200-panel blind concordance vs IEC 61215.</div>
+              </div>
+              <div style="text-align: right; min-width: 130px; border-left: 2px solid #e2e8f0; padding-left: 14px;">
+                <div style="color: #0d9488; font-weight: 800; font-size: 13px;">Months 3-6</div>
+                <div style="color: #64748b; font-size: 11.5px;">SunSecond Team</div>
+              </div>
+            </div>
+            
+            <div class="card" style="display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 18px; margin-bottom: 10px;">
+              <div style="max-width: 820px;">
+                <div style="color: #1e293b; font-weight: 800; font-size: 15px; margin-bottom: 4px;">Commission Unit-1 Dual-Sector Pilot Hub</div>
+                <div style="color: #475569; font-size: 13px; line-height: 1.45;">Sign CPCB recycler tolling MoU; deploy Scout + Extract-Pod to reach Month-4 break-even (360/mo).</div>
+              </div>
+              <div style="text-align: right; min-width: 130px; border-left: 2px solid #e2e8f0; padding-left: 14px;">
+                <div style="color: #0d9488; font-weight: 800; font-size: 13px;">Months 6-12</div>
+                <div style="color: #64748b; font-size: 11.5px;">SunSecond Team</div>
+              </div>
+            </div>
+            </div>
+      <div class="footer-bar">
+        <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 12 of 13</span>
+        <a href="https://iamneerajverma001.github.io/SunSecond/docs/appendix_d_cascade_reuse.html" class="deep-dive-btn" target="_blank">Deep Dive: Appendix D — Interview Kit -></a>
+      </div>
+    </div>
+    
+<div class="slide" style="padding: 0.8in 1.0in;">
+  <div style="display: flex; height: 100%; gap: 40px; align-items: center;">
+    
+    <!-- Left Column: Vision & Closing -->
+    <div style="flex: 1.2; display: flex; flex-direction: column; justify-content: center;">
+      <div style="display: inline-block; background: #ccfbf1; color: #0d9488; border: 1px solid #0d9488; padding: 4px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; width: fit-content; margin-bottom: 14px;">
+        BEC754  |  PROJECT SUNSECOND
+      </div>
+      <h1 style="color: #1e293b; font-size: 46px; font-weight: 900; margin: 0 0 16px 0;">
+        Thank You.
+      </h1>
+      
+      <div style="background: #f0fdfa; border-left: 4px solid #0d9488; border-radius: 0 12px 12px 0; padding: 18px 24px; margin-bottom: 24px;">
+        <div style="color: #0f766e; font-size: 18px; font-weight: 800; font-style: italic; line-height: 1.45;">
+          "Every Ray Deserves a Second Life.<br>Every Gram Deserves a Clean Return."
+        </div>
+        <div style="color: #475569; font-size: 13px; margin-top: 8px;">
+          The GIA Standard for Second-Life Solar & Circular Demanufacturing
+        </div>
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px 20px;">
+        <div style="font-size: 11px; text-transform: uppercase; font-weight: 800; color: #64748b; letter-spacing: 0.5px;">Student Founders & Project Assessment</div>
+        <div style="display: flex; justify-content: space-between; margin-top: 6px;">
+          <div>
+            <strong style="color: #0f766e; font-size: 15px;">Neeraj</strong>
+            <span style="color: #64748b; font-size: 13px;"> (Roll No. 2308410300042)</span>
+          </div>
+          <div>
+            <strong style="color: #0f766e; font-size: 15px;">Pankaj</strong>
+            <span style="color: #64748b; font-size: 13px;"> (Roll No. 2308410300044)</span>
+          </div>
+        </div>
+        <div style="color: #334155; font-size: 12.5px; margin-top: 6px; font-weight: 600;">
+          Department of Electronics Engineering  |  Rajkiya Engineering College, Sonbhadra
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Live Data Room & Scannable QR -->
+    <div style="flex: 0.85; background: #f8fafc; border: 2px solid #0d9488; border-radius: 16px; padding: 24px; text-align: center; box-shadow: 0 8px 30px rgba(13, 148, 136, 0.08); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div style="color: #0f766e; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+        Interactive Deep-Dive Data Room
+      </div>
+      
+      <!-- Embedded QR Code -->
+      <div style="background: #ffffff; padding: 12px; border-radius: 12px; border: 1px solid #cbd5e1; display: inline-block;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnYAAAJ2CAIAAABdNliuAAAOTklEQVR4nO3dwXEjwRFFQa5iDeBRPsh/U+SDjvQAcqEPfGpVdaYBA2AGwIs+/T+fz+cLAPht//j1KwIAEgsAFadYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEj8LS76/c9/FZdd5uc///71+3l+zULxPqdc89yUVy9M+X5OUXznX/YTfD+dYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWAOYs7UxZ3ijcXbSwo3Lrfp5/k++uo0zZI3r5O7/vE9119346xQJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCgMQCwBxOsQCQkFgASEgsAGxc2jlnfeLNzZMpuzTnigWb82ve/R1NuUvnpuwRFfwnn3CKBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgAeHtp52V3914Kd9dRpri7NnP3mnd3afat4nCLUywAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkDC0s4qxS6NzRP383//DSnWe4pXL9j52cQpFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIB4O2lnZfXJ+6ujtx9nzZP3rxLd78hxavv+wfb94kKTrEAkJBYAEhILAAkJBYAEhILABILAHM4xQJAQmIBICGxAJCQWABISCwAJCQWABISCwAbl3buLoS8bN9CyN1tlrsrQ675u/fz5d/mlLs0hVMsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJA4s/n82muzK95eftiypbIlD2iu9+lu09zyjNiE6dYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAxN+vIaYshEzZ/bj76ud3acr9vLveU9ylu9c89/J6z5R/xZc/kVMsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExALAnKWdYqdiyqLFy6sjhX0bR+f2faK7v44pv+Ip9n0/C06xAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsAiT+fz+drgn2LFlPWPKa8z3P7VpummLJ1c3ffacpdmrIA9nP1d+QUCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkPj79bAp2xdTFlem7H5MWQQ6N2VHZco3ecozursydO573X/dOadYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAxJ/P5/PrF315/2HK5sm5KZ/o7prHy9/5u6++71d87u4nmvLqdznFAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAvL20s2//wULI//9dmrLmMeUXV/DZN/0rFu7+3p1iASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYA5iztnJuydXPXvr0Xz+jW/Ty3b3Hl3Mt3/uXlooJTLAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCwMalnXMv7z/s2/2YotgnmbIlMuW5331GU567p3mLUywAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAsCcpZ27ixbn7u7S7FvesPNz6y6dm7I2M+V3tO+3+fKu10/wiZxiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYA5iztFPYtb0zZlJjyPvld+/Zzprz6vl/xuX3ba06xAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsAc5Z29q06nJuyS7NvdWTfmseULZGX79LdPaKXn/sUTrEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwCJv19X3d1V2LfRcdeUhaV9+yRTXr1w99cxZZPHv82t75JTLAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCwMalnSkLIfZzbt3PwpTVkSnfOq/+u3d+yv089xN89uLVC06xAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsAiT+fz2fZKs65l/de9i1aFPdzyr7Ty8993y9uyi7NlP/5c8Vzd4oFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWACYs7RzbspWw5Tti7v27X7s27qZsh20731OueYUP0P+FZ1iASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYANi7tnCvWJ6a8+sv3s7BvvWffc9/36ndNWQQ6N+W36RQLAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQAwZ2nn5QWGuxsyhX3PqDBlO2jfisu5KRsy56a8z7vu3iWnWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgDlLO+deXop4eZvl3L7FlX0rQ+c8zRN2vTb9jpxiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEn+/rnp5U2KKKWszhX2bPHffZ3HNKWtdtpjeXJdyigWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYANi4tPPyqsOUbZYpixbn9m2zFPZ9P4tPNOWzv7zFdPd+OsUCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILADMWdqZsmRSmLJTca5YtDh3d3ljyjXP7VsyKex7RsV2UOF7yCbPOadYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAOUs7BfsPby4CTVneeHlD5uVnNOU7f+7unf8+fvW7+znnnGIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASfz6fz69fdN9SxF37Njqm7NIUpuzS7FvBmmLfHtHL/yFOsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAIm/X0Ps2xKZshAyZRnm7h5R8Ylefp+FKRsyd/8ZpvzTfg/51jnFAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAvL20M2VL5K4pazPFNac8o8Ld1ZF9d37Kiss+3+vuvFMsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJA4s/n82muzJIlk7vbLPtevbDvG1LYtwh0985P+R19X32fTrEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwCJv8VF9y1aFM5XHabsVOxTfPbiaZ5fs1gdmbKbVJjyiV5exfm5+omcYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWAOYs7Zy7u4FQeHmXZspz37chM+V3tO/XMeUTTfmG/Ax5n+ecYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWADYu7UxZtLi7/3B3cWXKZ9+3yXP3aU7Z+ZnyPotPNGXn5+Wn6RQLAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQDw9tIOb+5UnCs+0b4lk0Jxl4o9opef5t2Fpe/gzt/91p1zigWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhY2lllyp7GlFWcKXtEUxaW7j73u5/97s7P3a2bn6ubPHefu1MsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExALA20s7UzZPCnd3Kgp39zT2bZ5M2c8ptlmmLEHtW8E6v+b3kP+lglMsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExALAxqWdlxcY9tm3efLydtCU5aJzU3Zppuz8FK++j1MsACQkFgASEgsACYkFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJA4s/n82muDABPc4oFgITEAkBCYgEgIbEAkJBYAEhILAAkJBYAEhILAAmJBYCExAJAQmIBICGxAJCQWABISCwAJCQWABISCwAJiQWAhMQCQEJiASAhsQCQkFgASEgsACQkFgASEgsACYkFgITEAkBCYgHgq/BfDrS3bQ9rExcAAAAASUVORK5CYII=" alt="SunSecond Data Room QR Code" style="width: 170px; height: 170px; display: block;" />
+      </div>
+
+      <div style="font-size: 11.5px; color: #64748b; margin: 12px 0 10px; font-weight: 600;">
+        Scan with Phone Camera to Access Master Bible & All 9 Appendices
+      </div>
+
+      <a href="https://iamneerajverma001.github.io/SunSecond/" target="_blank" style="display: inline-block; background: #0d9488; color: #ffffff !important; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px; margin-bottom: 6px;">
+        Open Live Data Room Web Portal ->
+      </a>
+
+      <div style="font-size: 11px; color: #0d9488; font-weight: 700;">
+        <a href="https://iamneerajverma001.github.io/SunSecond/" target="_blank" style="color: #0d9488; text-decoration: none;">https://iamneerajverma001.github.io/SunSecond/</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bar">
+    <span>SunSecond (STDD)  |  BEC754  |  Electronics Engineering, REC Sonbhadra  |  Slide 13 of 13</span>
+    <span style="color: #0d9488; font-weight: 700;">Live Online Assessment Ready</span>
+  </div>
+</div>
+
+</body>
+</html>
